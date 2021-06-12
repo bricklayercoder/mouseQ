@@ -124,6 +124,13 @@ public class CageZZ {
         return miceRecords;
     }
     public void loadMiceRecords(){
+        File mouseQDirFile=new File(Utilities.getTablesFolderDir());
+        String[] fileDirs=mouseQDirFile.list();
+        if(fileDirs==null) {
+            return;
+        }
+
+
         String recentMiceTableDir=Utilities.getTablesFolderDir()+ File.separator + ReadMiceTables.getRecentMiceTableDir()+".txt";
         System.out.println("Inside loadMiceRecord: "+ recentMiceTableDir);
         ArrayList<String> mouseList=null;

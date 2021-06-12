@@ -23,6 +23,7 @@ public final class ReadMiceTables {
         File mouseQDirFile=new File(Utilities.getTablesFolderDir());
         String[] fileDirs=mouseQDirFile.list();
 
+
         Set<String> filteredDirs=null;
 
         filteredDirs= Stream.of(fileDirs).filter(str -> str.matches("^\\d{4}-\\d{2}-\\d{2} \\d{2}-\\d{2}.txt$"))
