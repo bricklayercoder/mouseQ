@@ -21,7 +21,7 @@ public class MainFrame extends Application {
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Welcome to mouseQ");
         BorderPane root=new BorderPane();
-        root.setPadding(new Insets(5, 5, 5, 5));
+        root.setPadding(new Insets(2, 5, 5, 5));
 
         HBox topToolBox= new HBox();
 
@@ -69,6 +69,7 @@ public class MainFrame extends Application {
         root.setTop(topToolBox);
         Scene scene=new Scene(root, 1750, 1200);
         primaryStage.setScene(scene);
+        scene.getStylesheets().add(MainFrame.class.getResource("stylesheet.css").toExternalForm());
         primaryStage.show();
 
 
