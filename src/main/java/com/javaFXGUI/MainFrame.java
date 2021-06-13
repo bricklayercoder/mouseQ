@@ -3,12 +3,11 @@ package com.javaFXGUI;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class MainFrame extends Application {
@@ -66,21 +65,31 @@ public class MainFrame extends Application {
         menuBar.getMenus().addAll(mouseQMenu, fileMenu, mouseMenu, cageMenu, recordMenu);
         topToolBox.getChildren().add(menuBar);
 
+
+
+
+
+
+
+
         root.setTop(topToolBox);
         Scene scene=new Scene(root, 1750, 1200);
         primaryStage.setScene(scene);
         scene.getStylesheets().add(MainFrame.class.getResource("/stylesheet.css").toExternalForm());
         primaryStage.show();
 
+    }
 
-
-
-
-
-
-
-
+    private void makeSearchMiceHBox(){
+        HBox hBox =new HBox();
+        Label searchLabel=new Label("search");
+        TextField searchField=new TextField();
+        Text currentText=new Text("Current");
 
     }
+
+
+
+
 
 }
