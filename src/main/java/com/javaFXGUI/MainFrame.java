@@ -69,7 +69,7 @@ public class MainFrame extends Application {
         root.setTop(topToolBox);
         Scene scene=new Scene(root, 1750, 1200);
         primaryStage.setScene(scene);
-        scene.getStylesheets().add(MainFrame.class.getResource("stylesheet.css").toExternalForm());
+        scene.getStylesheets().add(MainFrame.class.getResource("/stylesheet.css").toExternalForm());
         primaryStage.show();
 
 
