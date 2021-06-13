@@ -3,6 +3,7 @@ package com.cagezz;
 import com.mouse.DataSanity;
 import com.mouse.Mouse;
 
+import javax.xml.crypto.Data;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -201,36 +202,44 @@ public class CageZZ {
     /*use the cagesHoused HashMap to
     check dataSanity to see if mice records are properly kept.
      */
+    private boolean isCageSanityDataAlreadyInHashMap(String cageNumber, DataSanity dataSanity){
+        boolean isAlreadyInHashmap=false;
+        DataSanity dataSanityInTheHashMap=dataSanityHashMap.get(cageNumber);
+
+        if ( dataSanity.toString().equals(dataSanityInTheHashMap.toString())){
+            isAlreadyInHashmap=true;
+        }
+
+        return isAlreadyInHashmap;
+
+    }
 
 
     public HashMap<String, DataSanity> getDataSanityHashMap(){
         Cage thisCage;
         ArrayList<Mouse> miceInThisCage;
-        String cageStatus;
-        String mouseStatus;
+        DataSanity thisCagesDataSanity;
         System.out.println(cagezzHoused);
 
         for(Map.Entry<String, Cage> entry : cagezzHoused.entrySet()){
             thisCage=entry.getValue();
             miceInThisCage=thisCage.getMiceInfoContainer();
 
-            System.out.println("cageNumber: "+thisCage.getCageNumber()+" how many mice in this cage: "+miceInThisCage.size());
-            if(miceInThisCage.size() > 5) dataSanityHashMap.put(thisCage.getCageNumber(), DataSanity.OVER_SIZED);
-            cageStatus=thisCage.getStatus();
+
+            if(miceInThisCage.size() > 5) {
+                thisCagesDataSanity=DataSanity.OVER_SIZED;
+                if(! isCageSanityDataAlreadyInHashMap(thisCage.getCageNumber(), thisCagesDataSanity)){
+                dataSanityHashMap.put(thisCage.getCageNumber(), DataSanity.OVER_SIZED);
+                }
+            }
+
             for(Mouse mouse : miceInThisCage) {
-                System.out.println(mouse.getTagNumber() + " " + mouse.getStatus());
-
-                System.out.println(thisCage.getStatus());
-                System.out.println(mouse.getStatus());
-
-
-//                if(thisCage.getStatus() != mouse.getStatus());{
 
                 if(!Objects.equals(thisCage.getStatus(), mouse.getStatus())){
-                    System.out.println("Inside if status compare clause.");
-                    System.out.println(thisCage.getStatus());
-                    System.out.println(mouse.getStatus());
+                    thisCagesDataSanity=DataSanity.INCOMPATIBLE_BREED_STATUS;
+                    if (!isCageSanityDataAlreadyInHashMap(thisCage.getCageNumber(), thisCagesDataSanity)){
                     dataSanityHashMap.put(entry.getKey(), DataSanity.INCOMPATIBLE_BREED_STATUS);
+                    }
                     break;
                 }
             }
