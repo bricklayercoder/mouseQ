@@ -126,6 +126,7 @@ public class CageZZ {
     public void loadMiceRecords(){
         File mouseQDirFile=new File(Utilities.getTablesFolderDir());
         String[] fileDirs=mouseQDirFile.list();
+
         if(fileDirs==null) {
             return;
         }
