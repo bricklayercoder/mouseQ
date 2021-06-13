@@ -19,7 +19,7 @@ public class MainFrame extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Welcome to mouseQ");
-        BorderPane root=new BorderPane();
+        VBox root=new VBox();
         root.setPadding(new Insets(2, 5, 5, 5));
 
         HBox topToolBox= new HBox();
@@ -65,14 +65,8 @@ public class MainFrame extends Application {
         menuBar.getMenus().addAll(mouseQMenu, fileMenu, mouseMenu, cageMenu, recordMenu);
         topToolBox.getChildren().add(menuBar);
 
+        root.getChildren().add(topToolBox);
 
-
-
-
-
-
-
-        root.setTop(topToolBox);
         Scene scene=new Scene(root, 1750, 1200);
         primaryStage.setScene(scene);
         scene.getStylesheets().add(MainFrame.class.getResource("/stylesheet.css").toExternalForm());

@@ -1,6 +1,11 @@
+.root {
+    -fx-background-color: lightgrey;
+}
+
 .menu {
-    -fx-font-size: 13px;
+    -fx-font-size: 14px;
     -fx-font-family: "Arial Narrow";
     -fx-font-weight: bold;
     -fx-text-fill: #333333;
+    -fx-border-radius: 10;
 }
