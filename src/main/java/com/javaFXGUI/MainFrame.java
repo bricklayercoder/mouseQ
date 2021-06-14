@@ -71,18 +71,11 @@ public class MainFrame extends Application {
         menuBar.getMenus().addAll(mouseQMenu, fileMenu, mouseMenu, cageMenu, recordMenu);
         topToolBox.getChildren().add(menuBar);
 
-        root.setTop(topToolBox);
-//        root.getChildren().add(topToolBox);
- //       makeOverallBorderPane(root);
         makeTablesSplitPane(root);
-        makeStageAndActionProcessVBox(root);
 
-        /*
-        For dev test purposes
-         */
- //       makeMiceBox(root);
- //       makeCagezBox(root);
- //       makeTablesSplitPane(root);
+        root.setTop(topToolBox);
+
+        makeStageAndActionProcessVBox(root);
 
         Scene scene=new Scene(root, 1400, 875);
         primaryStage.setScene(scene);
@@ -265,6 +258,8 @@ public class MainFrame extends Application {
     private void makeStageTabPane(VBox stageAndActionIndicatorVbox){
 
         TabPane tabPane=new TabPane();
+        tabPane.setPrefHeight(500);
+        tabPane.setPrefWidth(300);
 
         /*
         make mouse stage tab
@@ -404,32 +399,15 @@ public class MainFrame extends Application {
 
 
     }
-//
-//    private void makeOverallBorderPane(BorderPane root){
-//        AnchorPane tablesAndStageActionAnchorPane=new AnchorPane ();
-//        makeTablesVBox(tablesAndStageActionAnchorPane);
-////        makeStageTabPane(tablesAndStageHBox);
-//
-//        /*
-//        Add a separator
-//         */
-////        Separator separator=new Separator();
-////        tablesAndStageActionHBox.getChildren().add(separator);
-//
-//        makeStageAndActionProcessVBox(tablesAndStageActionAnchorPane);
-//        root.getChildren().add(tablesAndStageActionAnchorPane);
-//
-//    }
 
     private void makeStageAndActionProcessVBox(BorderPane root){
         VBox stageAndActionProcessVbox=new VBox();
+        stageAndActionProcessVbox.setPrefWidth(300);
         Separator separator=new Separator();
         makeStageTabPane(stageAndActionProcessVbox);
         stageAndActionProcessVbox.getChildren().add(separator);
         makeActionProcessIndicator(stageAndActionProcessVbox);
-        AnchorPane.setRightAnchor(stageAndActionProcessVbox, 5.0);
-        AnchorPane.setBottomAnchor(stageAndActionProcessVbox, 5.0);
-        AnchorPane.setTopAnchor(stageAndActionProcessVbox, 5.0);
+
 
         root.setRight(stageAndActionProcessVbox);
     }
@@ -437,27 +415,16 @@ public class MainFrame extends Application {
     private void makeActionProcessIndicator(VBox stageAndActionProcessVBox){
         TextArea textArea=new TextArea();
         VBox wrapperVBox=new VBox();
-        wrapperVBox.setAlignment(Pos.BOTTOM_CENTER);
 
         Text processText=new Text("Process");
 
-        HBox processTextContainer=new HBox();
-        processTextContainer.getChildren().add(processText);
-        processTextContainer.setAlignment(Pos.CENTER);
 
         Region space= new Region();
         VBox.setVgrow(space, Priority.ALWAYS);
 
-        HBox textAreaContainerHBox=new HBox();
-        textAreaContainerHBox.setAlignment(Pos.BOTTOM_RIGHT);
-        textAreaContainerHBox.getChildren().add(textArea);
-        textAreaContainerHBox.setPadding(new Insets(5, 2, 5, 5));
-        textAreaContainerHBox.setPrefWidth(250);
-        textAreaContainerHBox.setPrefHeight(275);
 
         Separator separator=new Separator();
 
-        HBox copyrightContainerHBox=new HBox();
         TextArea copyrightInfoTextArea=new TextArea("@copyrights\nmouseQ is currently under development.\n" +
                 "All rights reserved.\n"+
                 "For more information, \n" +
@@ -465,11 +432,8 @@ public class MainFrame extends Application {
                 "For user guide,\n" +
                 "Click the Record menu, then choose Tips option.\n" +
                 "Commercial distribution of mouseQ is legally prohibited.");
-        copyrightContainerHBox.setPrefHeight(150);
-        copyrightContainerHBox.setAlignment(Pos.BOTTOM_RIGHT);
-        copyrightContainerHBox.getChildren().add(copyrightInfoTextArea);
 
-        wrapperVBox.getChildren().addAll(processTextContainer,space, textAreaContainerHBox,separator, copyrightContainerHBox);
+        wrapperVBox.getChildren().addAll(processText,space, textArea,separator, copyrightInfoTextArea);
 
         stageAndActionProcessVBox.getChildren().add(wrapperVBox);
     }
