@@ -17,10 +17,28 @@ public class Cage  {
         return miceInfoContainer;
     }
 
-    public int getSize() {
+
+    public String getSize() {
         return Integer.valueOf(miceInfoContainer.size());
     }
 
+
+    public Cage(String cageNumber, String status, String notes, String strain, String size) {
+        this.cageNumber = cageNumber;
+        this.status = status;
+        this.notes = notes;
+        this.strain = strain;
+        this.size = size;
+    }
+
+    public Cage(){
+
+    }
+
+
+/*
+the setSize() is for dev test purposes
+ */
     public void setSize(String size) {
         this.size = size;
     }

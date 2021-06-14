@@ -2,6 +2,6 @@
 .idea/vcs.xml
 mouseQ.ipr
 mouseQ.iws
-
+target/*.*
 
 

@@ -9,3 +9,7 @@
     -fx-text-fill: #333333;
     -fx-border-radius: 10;
 }
+
+.text-area .content {
+    -fx-background-color: #61a2b1
+}
