@@ -6,12 +6,15 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.sql.Wrapper;
 
 public class MainFrame extends Application {
 
@@ -22,7 +25,7 @@ public class MainFrame extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Welcome to mouseQ");
-        VBox root=new VBox();
+        BorderPane root=new BorderPane();
         root.setPadding(new Insets(2, 5, 5, 5));
 
         HBox topToolBox= new HBox();
@@ -68,9 +71,11 @@ public class MainFrame extends Application {
         menuBar.getMenus().addAll(mouseQMenu, fileMenu, mouseMenu, cageMenu, recordMenu);
         topToolBox.getChildren().add(menuBar);
 
-
-        root.getChildren().add(topToolBox);
-        makeOverallHBox(root);
+        root.setTop(topToolBox);
+//        root.getChildren().add(topToolBox);
+ //       makeOverallBorderPane(root);
+        makeTablesSplitPane(root);
+        makeStageAndActionProcessVBox(root);
 
         /*
         For dev test purposes
@@ -79,29 +84,28 @@ public class MainFrame extends Application {
  //       makeCagezBox(root);
  //       makeTablesSplitPane(root);
 
-        Scene scene=new Scene(root, 1750, 1200);
+        Scene scene=new Scene(root, 1400, 875);
         primaryStage.setScene(scene);
         scene.getStylesheets().add(MainFrame.class.getResource("/stylesheet.css").toExternalForm());
         primaryStage.show();
 
     }
 
-    private void makeTablesVBox(HBox tablesAndStageHBox){
-        VBox tablesVBox=new VBox();
-//        tablesSPlitPane.setOrientation(Orientation.VERTICAL);
-        tablesVBox.setPrefHeight(1150);
-        tablesVBox.setPrefWidth(1055);
-        tablesVBox.setPadding(new Insets(5, 5, 5, 0.25));
-        makeMiceBox(tablesVBox);
+    private void makeTablesSplitPane(BorderPane root){
+        SplitPane tablesSplitPane=new SplitPane();
+        tablesSplitPane.setOrientation(Orientation.VERTICAL);
+        tablesSplitPane.setPrefHeight(1150);
+        tablesSplitPane.setPrefWidth(1055);
+        tablesSplitPane.setPadding(new Insets(5, 5, 5, 0.25));
+        makeMiceBox(tablesSplitPane);
         /*
         Add a separator
          */
         Separator separator=new Separator();
-        tablesVBox.getChildren().add(separator);
+        tablesSplitPane.getItems().add(separator);
 
-
-        makeCagezBox(tablesVBox);
-        tablesAndStageHBox.getChildren().add(tablesVBox);
+        makeCagezBox(tablesSplitPane);
+        root.setCenter(tablesSplitPane);
 
 
     }
@@ -118,13 +122,13 @@ public class MainFrame extends Application {
 
     }
 
-    private void makeMiceBox(VBox tablesVBox){
+    private void makeMiceBox(SplitPane tablesSplitPane){
         VBox miceVBox=new VBox();
-        miceVBox.setPrefHeight(600);
+        miceVBox.setPrefHeight(800);
         makeSearchMiceHBox(miceVBox);
         makeMiceTableView(miceVBox);
 
-        tablesVBox.getChildren().add(miceVBox);
+        tablesSplitPane.getItems().add(miceVBox);
 
 
     }
@@ -202,11 +206,12 @@ public class MainFrame extends Application {
 
 
 
-    private void makeCagezBox(VBox tablesVBox){
+    private void makeCagezBox(SplitPane tablesSplitPane){
         VBox cagezVBox=new VBox();
+        cagezVBox.setPrefHeight(600);
         makeSearchCagezBox(cagezVBox);
         makeCagezTableView(cagezVBox);
-        tablesVBox.getChildren().add(cagezVBox);
+        tablesSplitPane.getItems().add(cagezVBox);
 
 
     }
@@ -399,40 +404,74 @@ public class MainFrame extends Application {
 
 
     }
+//
+//    private void makeOverallBorderPane(BorderPane root){
+//        AnchorPane tablesAndStageActionAnchorPane=new AnchorPane ();
+//        makeTablesVBox(tablesAndStageActionAnchorPane);
+////        makeStageTabPane(tablesAndStageHBox);
+//
+//        /*
+//        Add a separator
+//         */
+////        Separator separator=new Separator();
+////        tablesAndStageActionHBox.getChildren().add(separator);
+//
+//        makeStageAndActionProcessVBox(tablesAndStageActionAnchorPane);
+//        root.getChildren().add(tablesAndStageActionAnchorPane);
+//
+//    }
 
-    private void makeOverallHBox(VBox root){
-        HBox tablesAndStageActionHBox=new HBox ();
-        makeTablesVBox(tablesAndStageActionHBox);
-//        makeStageTabPane(tablesAndStageHBox);
-
-        /*
-        Add a separator
-         */
-//        Separator separator=new Separator();
-//        tablesAndStageActionHBox.getChildren().add(separator);
-
-        makeStageAndActionProcessVBox(tablesAndStageActionHBox);
-        root.getChildren().add(tablesAndStageActionHBox);
-
-    }
-
-    private void makeStageAndActionProcessVBox(HBox tablesAndStageActionProcessHBox){
+    private void makeStageAndActionProcessVBox(BorderPane root){
         VBox stageAndActionProcessVbox=new VBox();
         Separator separator=new Separator();
         makeStageTabPane(stageAndActionProcessVbox);
         stageAndActionProcessVbox.getChildren().add(separator);
         makeActionProcessIndicator(stageAndActionProcessVbox);
-        tablesAndStageActionProcessHBox.getChildren().add(stageAndActionProcessVbox);
+        AnchorPane.setRightAnchor(stageAndActionProcessVbox, 5.0);
+        AnchorPane.setBottomAnchor(stageAndActionProcessVbox, 5.0);
+        AnchorPane.setTopAnchor(stageAndActionProcessVbox, 5.0);
 
+        root.setRight(stageAndActionProcessVbox);
     }
 
     private void makeActionProcessIndicator(VBox stageAndActionProcessVBox){
         TextArea textArea=new TextArea();
-        StackPane textAreaContainerStackPane=new StackPane(textArea);
-        textAreaContainerStackPane.setPadding(new Insets(5, 2, 5, 5));
-        textAreaContainerStackPane.setPrefWidth(300);
-        textAreaContainerStackPane.setPrefHeight(325);
-        stageAndActionProcessVBox.getChildren().add(textAreaContainerStackPane);
+        VBox wrapperVBox=new VBox();
+        wrapperVBox.setAlignment(Pos.BOTTOM_CENTER);
+
+        Text processText=new Text("Process");
+
+        HBox processTextContainer=new HBox();
+        processTextContainer.getChildren().add(processText);
+        processTextContainer.setAlignment(Pos.CENTER);
+
+        Region space= new Region();
+        VBox.setVgrow(space, Priority.ALWAYS);
+
+        HBox textAreaContainerHBox=new HBox();
+        textAreaContainerHBox.setAlignment(Pos.BOTTOM_RIGHT);
+        textAreaContainerHBox.getChildren().add(textArea);
+        textAreaContainerHBox.setPadding(new Insets(5, 2, 5, 5));
+        textAreaContainerHBox.setPrefWidth(250);
+        textAreaContainerHBox.setPrefHeight(275);
+
+        Separator separator=new Separator();
+
+        HBox copyrightContainerHBox=new HBox();
+        TextArea copyrightInfoTextArea=new TextArea("@copyrights\nmouseQ is currently under development.\n" +
+                "All rights reserved.\n"+
+                "For more information, \n" +
+                "Please contact Biolyric at 41186531@qq.com.\n"+
+                "For user guide,\n" +
+                "Click the Record menu, then choose Tips option.\n" +
+                "Commercial distribution of mouseQ is legally prohibited.");
+        copyrightContainerHBox.setPrefHeight(150);
+        copyrightContainerHBox.setAlignment(Pos.BOTTOM_RIGHT);
+        copyrightContainerHBox.getChildren().add(copyrightInfoTextArea);
+
+        wrapperVBox.getChildren().addAll(processTextContainer,space, textAreaContainerHBox,separator, copyrightContainerHBox);
+
+        stageAndActionProcessVBox.getChildren().add(wrapperVBox);
     }
 
 
