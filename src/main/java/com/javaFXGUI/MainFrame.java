@@ -258,7 +258,7 @@ public class MainFrame extends Application {
     private void makeStageTabPane(VBox stageAndActionIndicatorVbox){
 
         TabPane tabPane=new TabPane();
-        tabPane.setPrefHeight(500);
+        tabPane.setPrefHeight(550);
         tabPane.setPrefWidth(300);
 
         /*
@@ -266,7 +266,7 @@ public class MainFrame extends Application {
          */
         GridPane mouseGrid=new GridPane();
         mouseGrid.setAlignment(Pos.CENTER);
-        mouseGrid.setHgap(5); mouseGrid.setVgap(5);
+        mouseGrid.setHgap(30); mouseGrid.setVgap(10);
         mouseGrid.setPadding(new Insets(5, 5, 15, 5));
 
         Text currentText=new Text("Selected");
@@ -351,7 +351,7 @@ public class MainFrame extends Application {
          */
         GridPane cageGrid=new GridPane();
         cageGrid.setAlignment(Pos.CENTER);
-        cageGrid.setHgap(5); cageGrid.setVgap(5);
+        cageGrid.setHgap(30); cageGrid.setVgap(10);
         cageGrid.setPadding(new Insets(5, 5, 15, 5));
 
         Text selectedText=new Text("Selected");
@@ -415,6 +415,7 @@ public class MainFrame extends Application {
     private void makeActionProcessIndicator(VBox stageAndActionProcessVBox){
         TextArea textArea=new TextArea();
         VBox wrapperVBox=new VBox();
+        wrapperVBox.setSpacing(2);
 
         Text processText=new Text("Process");
 
