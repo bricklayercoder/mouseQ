@@ -10,14 +10,19 @@ public class Cage  {
     private String  status=Status.MAINTAINING.toString();
     private String  notes="Not entered";
     private String  strain;
+    private String  size;
     private ArrayList<Mouse> miceInfoContainer =new ArrayList<Mouse>();
 
     public ArrayList<Mouse> getMiceInfoContainer(){
         return miceInfoContainer;
     }
 
-    public long getSize() {
-        return miceInfoContainer.size();
+    public int getSize() {
+        return Integer.valueOf(miceInfoContainer.size());
+    }
+
+    public void setSize(String size) {
+        this.size = size;
     }
 
     public String getStatus() {
