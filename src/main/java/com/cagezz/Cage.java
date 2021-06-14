@@ -19,7 +19,7 @@ public class Cage  {
 
 
     public String getSize() {
-        return Integer.valueOf(miceInfoContainer.size());
+        return String.valueOf(miceInfoContainer.size());
     }
 
 
