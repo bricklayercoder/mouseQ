@@ -426,7 +426,7 @@ public class MainFrame extends Application {
 
         Separator separator=new Separator();
 
-        TextArea copyrightInfoTextArea=new TextArea("@copyrights\nmouseQ is currently under development.\n" +
+        Text copyrightInfoText=new Text("@copyrights\nmouseQ is currently under development.\n" +
                 "All rights reserved.\n"+
                 "For more information, \n" +
                 "Please contact Biolyric at 41186531@qq.com.\n"+
@@ -434,7 +434,7 @@ public class MainFrame extends Application {
                 "Click the Record menu, then choose Tips option.\n" +
                 "Commercial distribution of mouseQ is legally prohibited.");
 
-        wrapperVBox.getChildren().addAll(processText,space, textArea,separator, copyrightInfoTextArea);
+        wrapperVBox.getChildren().addAll(processText,space, textArea,separator, copyrightInfoText);
 
         stageAndActionProcessVBox.getChildren().add(wrapperVBox);
     }
