@@ -72,7 +72,7 @@ public class Mouse {
         return maternalTagNumber;
     }
 
-    public String getPaterNalTagNumber() {
+    public String getPaternalTagNumber() {
         return paterNalTagNumber;
     }
 

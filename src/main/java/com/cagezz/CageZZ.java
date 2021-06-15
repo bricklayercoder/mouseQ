@@ -35,7 +35,7 @@ public class CageZZ {
             arrayRepresentationOfMiceData[row][1]=entry.getValue().getGender();
             arrayRepresentationOfMiceData[row][2]=entry.getValue().getBirthDate();
             arrayRepresentationOfMiceData[row][3]=entry.getValue().getStrain();
-            arrayRepresentationOfMiceData[row][4]=entry.getValue().getPaterNalTagNumber();
+            arrayRepresentationOfMiceData[row][4]=entry.getValue().getPaternalTagNumber();
             arrayRepresentationOfMiceData[row][5]=entry.getValue().getMaternalTagNumber();
             arrayRepresentationOfMiceData[row][6]=entry.getValue().getCoatColour();
             arrayRepresentationOfMiceData[row][7]=entry.getValue().getWeanDate();

@@ -163,7 +163,7 @@ public final class Utilities {
             sb.append(rightPadWhiteSpaces(mouse.getGender()            +",", 18));
             sb.append(rightPadWhiteSpaces(mouse.getBirthDate()         +",", 18));
             sb.append(rightPadWhiteSpaces(mouse.getStrain()            +",", 18));
-            sb.append(rightPadWhiteSpaces(mouse.getPaterNalTagNumber() +",", 18));
+            sb.append(rightPadWhiteSpaces(mouse.getPaternalTagNumber() +",", 18));
             sb.append(rightPadWhiteSpaces(mouse.getMaternalTagNumber() +",", 18));
             sb.append(rightPadWhiteSpaces(mouse.getCoatColour()        +",",18));
             sb.append(rightPadWhiteSpaces(mouse.getWeanDate()          +",", 18));

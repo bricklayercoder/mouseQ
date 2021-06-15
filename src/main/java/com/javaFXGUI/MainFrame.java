@@ -432,7 +432,7 @@ public class MainFrame extends Application {
                 "Please contact Biolyric at 41186531@qq.com.\n"+
                 "For user guide,\n" +
                 "Click the Record menu, then choose Tips option.\n" +
-                "Commercial distribution of mouseQ is legally prohibited.");
+                "Commercial distribution legally prohibited.");
 
         wrapperVBox.getChildren().addAll(processText,space, textArea,separator, copyrightInfoText);
 
