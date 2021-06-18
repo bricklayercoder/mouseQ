@@ -111,6 +111,7 @@ public class MainFrame extends Application {
         hBox.setPadding(new Insets(5, 5, 5,5));
         hBox.setAlignment(Pos.CENTER);
         hBox.getChildren().addAll(searchLabel, searchField);
+        hBox.getStylesheets().add(MainFrame.class.getResource("/stylesheet.css").toExternalForm());
         miceVBox.getChildren().add(hBox);
 
     }
@@ -433,6 +434,7 @@ public class MainFrame extends Application {
                 "For user guide,\n" +
                 "Click the Record menu, then choose Tips option.\n" +
                 "Commercial distribution legally prohibited.");
+        copyrightInfoText.setId("copyright-text");
 
         wrapperVBox.getChildren().addAll(processText,space, textArea,separator, copyrightInfoText);
 
