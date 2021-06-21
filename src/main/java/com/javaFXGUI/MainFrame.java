@@ -119,6 +119,7 @@ public class MainFrame extends Application {
     private void makeMiceBox(SplitPane tablesSplitPane){
         VBox miceVBox=new VBox();
         miceVBox.setPrefHeight(800);
+        miceVBox.setPrefWidth(1400);
         makeSearchMiceHBox(miceVBox);
         makeMiceTableView(miceVBox);
 
@@ -179,6 +180,22 @@ public class MainFrame extends Application {
         miceTableView.getColumns().add(statusColumn);
         miceTableView.getColumns().add(notesColumn);
 
+
+        tagNumberColomn.setPrefWidth(110);
+        motherNumberColomn.setPrefWidth(110);
+        fatherNumberColomn.setPrefWidth(110);
+        genotypeColomn.setPrefWidth(110);
+        birthDateColumn.setPrefWidth(110);
+        genderColumn.setPrefWidth(110);
+        strainColumn.setPrefWidth(110);
+        coatColorColumn.setPrefWidth(110);
+        weanDateColumn.setPrefWidth(110);
+        cageNumberColumn.setPrefWidth(110);
+        statusColumn.setPrefWidth(110);
+        notesColumn.setPrefWidth(200);
+
+
+
         VBox tableContainerVBox=new VBox(miceTableView);
         miceBox.getChildren().add(tableContainerVBox);
 
@@ -203,6 +220,7 @@ public class MainFrame extends Application {
     private void makeCagezBox(SplitPane tablesSplitPane){
         VBox cagezVBox=new VBox();
         cagezVBox.setPrefHeight(600);
+        cagezVBox.setPrefWidth(1400);
         makeSearchCagezBox(cagezVBox);
         makeCagezTableView(cagezVBox);
         tablesSplitPane.getItems().add(cagezVBox);
@@ -246,6 +264,14 @@ public class MainFrame extends Application {
         cagezTableView.getColumns().add(sizeColumn);
         cagezTableView.getColumns().add(notesColumn);
 
+        cageNumberColumn.setPrefWidth(130);
+        strainColumn.setPrefWidth(130);
+        statusColumn.setPrefWidth(130);
+        sizeColumn.setPrefWidth(130);
+        notesColumn.setPrefWidth(900);
+
+
+
         VBox cagesTableViewContainerVBox=new VBox(cagezTableView);
         cagezVbox.getChildren().add(cagesTableViewContainerVBox);
 
@@ -261,7 +287,6 @@ public class MainFrame extends Application {
         TabPane tabPane=new TabPane();
         tabPane.setPrefHeight(550);
         tabPane.setPrefWidth(300);
-
         /*
         make mouse stage tab
          */
@@ -337,7 +362,7 @@ public class MainFrame extends Application {
         mouseGrid.add(notesLabel, 0, 12);
         mouseGrid.add(notesText, 1, 12);
 
-        Button updateButton =new Button("Update");
+        Button updateButton =new Button("_Update");
         HBox btnHBox=new HBox();
         btnHBox.setSpacing(10);
         btnHBox.setAlignment(Pos.BOTTOM_RIGHT);
@@ -345,6 +370,7 @@ public class MainFrame extends Application {
         mouseGrid.add(btnHBox, 1, 14);
 
         Tab mouseTab=new Tab("Mouse", mouseGrid);
+        mouseTab.setStyle("-fx-background-color: #505150");
         tabPane.getTabs().add(mouseTab);
 
         /**
@@ -390,6 +416,7 @@ public class MainFrame extends Application {
         cageGrid.add(updateCageButton, 1, 7);
 
         Tab cageTab =new Tab("Cage", cageGrid);
+        cageTab.setStyle("-fx-background-color: #505150");
         tabPane.getTabs().add(cageTab);
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
@@ -404,9 +431,7 @@ public class MainFrame extends Application {
     private void makeStageAndActionProcessVBox(BorderPane root){
         VBox stageAndActionProcessVbox=new VBox();
         stageAndActionProcessVbox.setPrefWidth(300);
-        Separator separator=new Separator();
         makeStageTabPane(stageAndActionProcessVbox);
-        stageAndActionProcessVbox.getChildren().add(separator);
         makeActionProcessIndicator(stageAndActionProcessVbox);
 
 
@@ -425,7 +450,6 @@ public class MainFrame extends Application {
         VBox.setVgrow(space, Priority.ALWAYS);
 
 
-        Separator separator=new Separator();
 
         Text copyrightInfoText=new Text("@copyrights\nmouseQ is currently under development.\n" +
                 "All rights reserved.\n"+
@@ -436,7 +460,7 @@ public class MainFrame extends Application {
                 "Commercial distribution legally prohibited.");
         copyrightInfoText.setId("copyright-text");
 
-        wrapperVBox.getChildren().addAll(processText,space, textArea,separator, copyrightInfoText);
+        wrapperVBox.getChildren().addAll(processText,space, textArea, copyrightInfoText);
 
         stageAndActionProcessVBox.getChildren().add(wrapperVBox);
     }

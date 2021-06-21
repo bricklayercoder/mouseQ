@@ -2,7 +2,12 @@
     -fx-background-color: #505150;
 }
 
-.menu {
+
+.menu-bar	 {
+        -fx-background-color: #505150;
+}
+
+.menu-item {
     -fx-background-color: #505150;
     -fx-font-size: 14px;
     -fx-font-family: "Arial Narrow";
@@ -11,7 +16,44 @@
     -fx-border-radius: 5;
 }
 
+.menu-item:focused {
+    -fx-background-color: royalblue;
+}
+
+.context-menu {
+  -fx-background-color: #505150;
+
+}
+
+.split-pane  {
+    -fx-background-color: #505150;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+  -fx-background-color:#505150;
+  -fx-tab-min-width:120px;
+  -fx-tab-max-width:120px;
+  -fx-tab-min-height:50px;
+  -fx-tab-max-height:50px;
+
+  -fx-text-box-border: purple;
+
+}
+
+
+.tab {
+  -fx-font-family: Arial;
+  -fx-font-size: 15;
+  -fx-background-insets: 0.3;
+  -fx-background-color: royal blue ;
+}
+
+.tab:selected {
+    -fx-background-color: royalblue ;
+}
+
 .label {
+    -fx-background-color: #505150;
     -fx-font-size: 15px;
     -fx-font-family: "Arial Narrow";
     -fx-font-weight: bold;
@@ -21,8 +63,82 @@
 
 }
 
+.button {
+       -fx-background-color: #505150;
+       -fx-text-fill: white
+}
+
+.text {
+     -fx-fill: white;
+
+}
+
+.table-view {
+    -fx-background-color: #505150;
+}
+
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, #616161;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, #424242;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #005797;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+
+.table-view{
+   -fx-background-color: transparent;
+}
+
+.table-view:focused{
+    -fx-background-color: transparent;
+}
+
+/* Spaltenköpfe
+    Struktur column-header-background -> column-header */
+
+.table-view .column-header-background{
+    -fx-background-color: linear-gradient(#131313 0%, #424141 100%);
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+    -fx-text-fill: white;
+}
+
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, #616161;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+
+
+
+
+
+
+
 .text-area .content {
-    -fx-background-color: lightgrey
+    -fx-background-color: #505150;
 }
 
 #copyright-text {
