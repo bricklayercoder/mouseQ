@@ -77,7 +77,7 @@ public class MainFrame extends Application {
 
         makeProcessIndicatorHBox(root);
 
-        Scene scene=new Scene(root, 1400, 875);
+        Scene scene=new Scene(root, 1400, 1200);
         primaryStage.setScene(scene);
         scene.getStylesheets().add(MainFrame.class.getResource("/stylesheet.css").toExternalForm());
         primaryStage.show();
@@ -85,20 +85,20 @@ public class MainFrame extends Application {
     }
 
     private void makeTablesSplitPane(BorderPane root){
-        SplitPane tablesSplitPane=new SplitPane();
-        tablesSplitPane.setOrientation(Orientation.VERTICAL);
-        tablesSplitPane.setPrefHeight(1150);
-        tablesSplitPane.setPrefWidth(1055);
-        tablesSplitPane.setPadding(new Insets(5, 5, 5, 0.25));
-        makeMiceBox(tablesSplitPane);
+        VBox tablesVBox=new VBox();
+ //       tablesVBox.setOrientation(Orientation.VERTICAL);
+        tablesVBox.setPrefHeight(1150);
+        tablesVBox.setPrefWidth(1055);
+        tablesVBox.setPadding(new Insets(5, 5, 5, 0.25));
+        makeMiceBox(tablesVBox);
         /*
         Add a separator
          */
-        Separator separator=new Separator();
-        tablesSplitPane.getItems().add(separator);
+        //Separator separator=new Separator();
+        //tablesVBox.getChildren().add(separator);
 
-        makeCagezBox(tablesSplitPane);
-        root.setCenter(tablesSplitPane);
+        makeCagezBox(tablesVBox);
+        root.setCenter(tablesVBox);
 
 
     }
@@ -116,14 +116,14 @@ public class MainFrame extends Application {
 
     }
 
-    private void makeMiceBox(SplitPane tablesSplitPane){
+    private void makeMiceBox(VBox tablesVBox){
         VBox miceVBox=new VBox();
         miceVBox.setPrefHeight(800);
         miceVBox.setPrefWidth(1400);
         makeSearchMiceHBox(miceVBox);
         makeMiceTableView(miceVBox);
 
-        tablesSplitPane.getItems().add(miceVBox);
+        tablesVBox.getChildren().add(miceVBox);
 
 
     }
@@ -217,13 +217,13 @@ public class MainFrame extends Application {
 
 
 
-    private void makeCagezBox(SplitPane tablesSplitPane){
+    private void makeCagezBox(VBox tablesVBox){
         VBox cagezVBox=new VBox();
-        cagezVBox.setPrefHeight(600);
+        cagezVBox.setPrefHeight(800);
         cagezVBox.setPrefWidth(1400);
         makeSearchCagezBox(cagezVBox);
         makeCagezTableView(cagezVBox);
-        tablesSplitPane.getItems().add(cagezVBox);
+        tablesVBox.getChildren().add(cagezVBox);
 
 
     }
