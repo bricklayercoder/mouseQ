@@ -219,7 +219,7 @@ public class MainFrame extends Application {
 
     private void makeCagezBox(VBox tablesVBox){
         VBox cagezVBox=new VBox();
-        cagezVBox.setPrefHeight(800);
+        cagezVBox.setPrefHeight(600);
         cagezVBox.setPrefWidth(1400);
         makeSearchCagezBox(cagezVBox);
         makeCagezTableView(cagezVBox);
