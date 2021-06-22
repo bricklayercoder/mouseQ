@@ -14,8 +14,6 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.sql.Wrapper;
-
 public class MainFrame extends Application {
 
     public static void main(String[] args){
@@ -75,7 +73,9 @@ public class MainFrame extends Application {
 
         root.setTop(topToolBox);
 
-        makeStageAndActionProcessVBox(root);
+        makeStageAndActionVBox(root);
+
+        makeProcessIndicatorHBox(root);
 
         Scene scene=new Scene(root, 1400, 875);
         primaryStage.setScene(scene);
@@ -264,11 +264,11 @@ public class MainFrame extends Application {
         cagezTableView.getColumns().add(sizeColumn);
         cagezTableView.getColumns().add(notesColumn);
 
-        cageNumberColumn.setPrefWidth(150);
-        strainColumn.setPrefWidth(150);
-        statusColumn.setPrefWidth(150);
-        sizeColumn.setPrefWidth(150);
-        notesColumn.setPrefWidth(600);
+        cageNumberColumn.setPrefWidth(165);
+        strainColumn.setPrefWidth(165);
+        statusColumn.setPrefWidth(165);
+        sizeColumn.setPrefWidth(165);
+        notesColumn.setPrefWidth(750);
 
 
 
@@ -282,7 +282,7 @@ public class MainFrame extends Application {
     }
 
 
-    private void makeStageTabPane(VBox stageAndActionIndicatorVbox){
+    private void makeStagePanes(VBox stageAndActionIndicatorVbox){
 
         TabPane tabPane=new TabPane();
         tabPane.setPrefHeight(550);
@@ -296,6 +296,7 @@ public class MainFrame extends Application {
         mouseGrid.setPadding(new Insets(5, 5, 15, 5));
 
         Text currentText=new Text("Selected");
+        currentText.setId("mouseSelected");
         mouseGrid.add(currentText, 0, 0, 2, 1);
 
         Label tagNumberLabel =new Label("Tag-Number:");
@@ -338,6 +339,7 @@ public class MainFrame extends Application {
         /*
         test code
          */
+        coatColorText.setId("coatColorText");
         coatColorText.setText("This is a test code");
 
         mouseGrid.add(coatColorLabel, 0, 8);
@@ -371,7 +373,8 @@ public class MainFrame extends Application {
 
         Tab mouseTab=new Tab("Mouse", mouseGrid);
         mouseTab.setStyle("-fx-background-color: #505150");
-        tabPane.getTabs().add(mouseTab);
+//        tabPane.getTabs().add(mouseTab);
+        stageAndActionIndicatorVbox.getChildren().add(mouseGrid);
 
         /**
          * make and add cage tab
@@ -382,6 +385,7 @@ public class MainFrame extends Application {
         cageGrid.setPadding(new Insets(5, 5, 15, 5));
 
         Text selectedText=new Text("Selected");
+        selectedText.setId("cageSelected");
         cageGrid.add(selectedText, 0, 0, 2, 1);
 
         Label cageNUmberLabelCageTab=new Label("Cage Number:");
@@ -415,24 +419,29 @@ public class MainFrame extends Application {
         updateCageBtnContainer.setAlignment(Pos.BOTTOM_RIGHT);
         cageGrid.add(updateCageButton, 1, 7);
 
-        Tab cageTab =new Tab("Cage", cageGrid);
-        cageTab.setStyle("-fx-background-color: #505150");
-        tabPane.getTabs().add(cageTab);
-        tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
+        Node spaceTop =new VBox();
+        Node spaceBottom=new VBox();
+        stageAndActionIndicatorVbox.getChildren().add(spaceTop);
+        VBox.setVgrow(spaceTop, Priority.SOMETIMES);
+        stageAndActionIndicatorVbox.getChildren().add(cageGrid);
+        VBox.setVgrow(spaceBottom, Priority.SOMETIMES);
+        stageAndActionIndicatorVbox.getChildren().add(spaceBottom);
 
+//        Tab cageTab =new Tab("Cage", cageGrid);
+ //       tabPane.getTabs().add(cageTab);
+  //      tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
-
-        stageAndActionIndicatorVbox.getChildren().add(tabPane);
+  //      stageAndActionIndicatorVbox.getChildren().add(tabPane);
 
 
 
     }
 
-    private void makeStageAndActionProcessVBox(BorderPane root){
+    private void makeStageAndActionVBox(BorderPane root){
         VBox stageAndActionProcessVbox=new VBox();
         stageAndActionProcessVbox.setPrefWidth(300);
-        makeStageTabPane(stageAndActionProcessVbox);
-        makeActionProcessIndicator(stageAndActionProcessVbox);
+        makeStagePanes(stageAndActionProcessVbox);
+ //       makeActionProcessIndicator(stageAndActionProcessVbox);
 
 
         root.setRight(stageAndActionProcessVbox);
@@ -444,6 +453,7 @@ public class MainFrame extends Application {
         wrapperVBox.setSpacing(2);
 
         Text processText=new Text("Process");
+        processText.setId("processText");
 
 
         Region space= new Region();
@@ -463,6 +473,16 @@ public class MainFrame extends Application {
         wrapperVBox.getChildren().addAll(processText,space, textArea, copyrightInfoText);
 
         stageAndActionProcessVBox.getChildren().add(wrapperVBox);
+    }
+
+    private void makeProcessIndicatorHBox(BorderPane root){
+        HBox processHBox=new HBox();
+        processHBox.setAlignment(Pos.TOP_LEFT);
+        Text processText=new Text();
+        processText.setId("processText");
+        processText.setText("Process will be shown here");
+//        processHBox.getChildren().add(processHBox);
+        root.setBottom(processText);
     }
 
 

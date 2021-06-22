@@ -52,6 +52,17 @@
     -fx-background-color: royalblue ;
 }
 
+#coatColorText {
+    -fx-fill: white;
+}
+
+#processText {
+   -fx-fill: white;
+   -fx-font-weight: bold;
+   -fx-text-fill: white;
+   -fx-font-size: 15pt;
+}
+
 .label {
     -fx-background-color: #505150;
     -fx-font-size: 15px;
@@ -66,6 +77,25 @@
 .button {
        -fx-background-color: #505150;
        -fx-text-fill: white
+}
+
+#mouseSelected {
+    -fx-font-smoothing-type: lcd;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-font-size: 15pt;
+}
+
+#cageSelected {
+    -fx-font-smoothing-type: lcd;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-font-size: 15pt;
+}
+
+#processText {
+    -fx-fill: white;
+    -fx-font-size: 14;
 }
 
 .text {
