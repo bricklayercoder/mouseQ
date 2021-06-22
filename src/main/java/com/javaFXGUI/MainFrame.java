@@ -181,18 +181,18 @@ public class MainFrame extends Application {
         miceTableView.getColumns().add(notesColumn);
 
 
-        tagNumberColomn.setPrefWidth(110);
-        motherNumberColomn.setPrefWidth(110);
-        fatherNumberColomn.setPrefWidth(110);
-        genotypeColomn.setPrefWidth(110);
-        birthDateColumn.setPrefWidth(110);
-        genderColumn.setPrefWidth(110);
-        strainColumn.setPrefWidth(110);
-        coatColorColumn.setPrefWidth(110);
-        weanDateColumn.setPrefWidth(110);
-        cageNumberColumn.setPrefWidth(110);
-        statusColumn.setPrefWidth(110);
-        notesColumn.setPrefWidth(200);
+        tagNumberColomn.setPrefWidth(90);
+        motherNumberColomn.setPrefWidth(90);
+        fatherNumberColomn.setPrefWidth(90);
+        genotypeColomn.setPrefWidth(90);
+        birthDateColumn.setPrefWidth(90);
+        genderColumn.setPrefWidth(90);
+        strainColumn.setPrefWidth(90);
+        coatColorColumn.setPrefWidth(90);
+        weanDateColumn.setPrefWidth(90);
+        cageNumberColumn.setPrefWidth(90);
+        statusColumn.setPrefWidth(90);
+        notesColumn.setPrefWidth(400);
 
 
 
@@ -264,11 +264,11 @@ public class MainFrame extends Application {
         cagezTableView.getColumns().add(sizeColumn);
         cagezTableView.getColumns().add(notesColumn);
 
-        cageNumberColumn.setPrefWidth(130);
-        strainColumn.setPrefWidth(130);
-        statusColumn.setPrefWidth(130);
-        sizeColumn.setPrefWidth(130);
-        notesColumn.setPrefWidth(900);
+        cageNumberColumn.setPrefWidth(150);
+        strainColumn.setPrefWidth(150);
+        statusColumn.setPrefWidth(150);
+        sizeColumn.setPrefWidth(150);
+        notesColumn.setPrefWidth(600);
 
 
 

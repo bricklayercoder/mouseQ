@@ -22,35 +22,11 @@
         <project.output.sourceEncoding>UTF_8</project.output.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
-<!--
-    <dependencies>
 
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>RELEASE</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.5.0</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
--->
 
 
         <dependencies>
-<!--
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter</artifactId>
-                <version>RELEASE</version>
-                <scope>test</scope>
-            </dependency>
--->
+
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter-api</artifactId>
@@ -58,12 +34,7 @@
                 <scope>test</scope>
             </dependency>
 
-            <dependency>
-                <groupId>org.junit.platform</groupId>
-                <artifactId>junit-platform-launcher</artifactId>
-                <version>1.8.0-M1</version>
-                <scope>test</scope>
-            </dependency>
+
 
             <dependency>
                 <groupId>org.junit.platform </groupId>
