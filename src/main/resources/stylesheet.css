@@ -25,9 +25,6 @@
 
 }
 
-.split-pane  {
-    -fx-background-color: #505150;
-}
 
 .tab-pane .tab-header-area .tab-header-background {
   -fx-background-color:#505150;
@@ -65,7 +62,7 @@
 
 .label {
     -fx-background-color: #505150;
-    -fx-font-size: 15px;
+    -fx-font-size: 12pt;
     -fx-font-family: "Arial Narrow";
     -fx-font-weight: bold;
     -fx-text-fill: white;
@@ -75,8 +72,14 @@
 }
 
 .button {
-       -fx-background-color: #505150;
-       -fx-text-fill: white
+       -fx-background-color: #326267;
+       -fx-text-fill: white;
+       -fx-font-weight: bold;
+       -fx-font-size: 12pt;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
 }
 
 #mouseSelected {
@@ -134,8 +137,6 @@
     -fx-background-color: transparent;
 }
 
-/* Spaltenköpfe
-    Struktur column-header-background -> column-header */
 
 .table-view .column-header-background{
     -fx-background-color: linear-gradient(#131313 0%, #424141 100%);
@@ -161,18 +162,3 @@
 }
 
 
-
-
-
-
-
-
-.text-area .content {
-    -fx-background-color: #505150;
-}
-
-#copyright-text {
-    -fx-font-size: 14px;
-    -fx-font-family: "Arial Narrow";
-    -fx-fill: white;
-}
