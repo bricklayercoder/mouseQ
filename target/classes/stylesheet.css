@@ -25,6 +25,11 @@
 
 }
 
+.text-field {
+  -fx-font-size: 12pt;
+  -fx-font-weight: bold;
+}
+
 
 .tab-pane .tab-header-area .tab-header-background {
   -fx-background-color:#505150;

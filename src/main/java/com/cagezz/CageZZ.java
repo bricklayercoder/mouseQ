@@ -86,9 +86,7 @@ public class CageZZ {
 
 
     private void loadCageRecords(){
-        /*
-        miceRecords is a HashMap of <String tagNumber, Mouse this Mouse>
-         */
+
         for(Map.Entry<String, Mouse> entry : miceRecords.entrySet()){
             Mouse thisMouse=entry.getValue();
             String cageNumber=thisMouse.getCageNumber();

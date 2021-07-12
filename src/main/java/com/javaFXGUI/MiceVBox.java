@@ -60,8 +60,6 @@ public class MiceVBox extends VBox {
 
     class MiceTableView extends TableView {
 
-
-
         public void  loadMiceRecordList(){
             miceRecordList= FXCollections.observableArrayList();
             CageZZ cageZZ=new CageZZ();
@@ -85,7 +83,7 @@ public class MiceVBox extends VBox {
                             }
 
                             // Compare each mouse attribute
-                            String lowerCaseFilter = newValue.toLowerCase();
+                            String lowerCaseFilter = newValue.toLowerCase().trim();
 
                             if (mouse.getTagNumber().toLowerCase().contains(lowerCaseFilter)) {
                                 return true;
