@@ -30,6 +30,10 @@
   -fx-font-weight: bold;
 }
 
+.text {
+  -fx-fill-color: white;
+}
+
 
 .tab-pane .tab-header-area .tab-header-background {
   -fx-background-color:#505150;
@@ -54,9 +58,6 @@
     -fx-background-color: royalblue ;
 }
 
-#coatColorText {
-    -fx-fill: white;
-}
 
 #processText {
    -fx-fill: white;
@@ -93,6 +94,94 @@
     -fx-fill: white;
     -fx-font-size: 15pt;
 }
+
+#textIDSelectedMouseTagNumber {
+    -fx-font-smoothing-type: lcd;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-font-size: 15px;
+}
+
+#textIDSelectedMouseMotherTagNumber {
+    -fx-font-smoothing-type: lcd;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-font-size: 15px;
+}
+
+#textIDSelectedMouseFatherTagNumber {
+    -fx-font-smoothing-type: lcd;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-font-size: 15px;
+}
+
+#textIDSelectedMouseGenotype {
+    -fx-font-smoothing-type: lcd;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-font-size: 15px;
+}
+
+#textIDSelectedMouseBirthDate {
+    -fx-font-smoothing-type: lcd;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-font-size: 15px;
+}
+
+#textIDSelectedMouseGender {
+    -fx-font-smoothing-type: lcd;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-font-size: 15px;
+}
+
+#textIDSelectedMouseStrain {
+    -fx-font-smoothing-type: lcd;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-font-size: 15px;
+}
+
+#textIDSelectedMouseCoatColor {
+    -fx-font-smoothing-type: lcd;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-font-size: 15px;
+}
+
+#textIDSelectedMouseWeanDate {
+    -fx-font-smoothing-type: lcd;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-font-size: 15px;
+}
+
+#textIDSelectedMouseCageNumber {
+    -fx-font-smoothing-type: lcd;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-font-size: 15px;
+}
+
+#textIDSelectedMouseStatus {
+    -fx-font-smoothing-type: lcd;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-font-size: 15px;
+}
+
+#textIDSelectedMouseNotes {
+    -fx-font-smoothing-type: lcd;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-font-size: 15px;
+}
+
+
+
+
 
 #cageSelected {
     -fx-font-smoothing-type: lcd;

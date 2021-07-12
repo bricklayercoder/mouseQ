@@ -5,6 +5,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 class MainFrameBorderPane extends BorderPane {
 
@@ -13,9 +14,8 @@ class MainFrameBorderPane extends BorderPane {
     VBox stageVBox=new StageVBox();
     Text processText=new Text();
 
-
-    public VBox getTablesVBox() {
-        return tablesVBox;
+    public StageVBox getStageVBox(){
+        return (StageVBox) stageVBox;
     }
 
     public MainFrameBorderPane() {

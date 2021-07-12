@@ -12,6 +12,10 @@ public class StageVBox extends VBox {
     Node spaceMiddle=new VBox();
     Node spaceBottom=new VBox();
 
+    public SelectedMouseGridPane getSelectedMouseGridPane(){
+        return (SelectedMouseGridPane) selectedMouseGridPane;
+    }
+
     public StageVBox() {
         this.setPrefHeight(1250);
         this.setPrefWidth(300);

@@ -192,7 +192,16 @@ public class MiceVBox extends VBox {
             sortedListofMice.comparatorProperty().bind(this.comparatorProperty());
             this.setItems(sortedListofMice);
 
-
+            TableView thisTableView=this;
+            this.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+                @Override
+                public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                    Mouse selectedMouse= (Mouse) thisTableView.getSelectionModel().getSelectedItem();
+                    MainFrameBorderPane workingMainFrameBorderPane=(MainFrameBorderPane)AppLaunch.mainFrameBorderPane;
+                    StageVBox workingStageVBox=workingMainFrameBorderPane.getStageVBox();
+                    workingStageVBox.getSelectedMouseGridPane().setSelectedMouseAttribute(selectedMouse);
+                }
+            });
         }
 
     }
