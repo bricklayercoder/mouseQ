@@ -2,9 +2,7 @@ package com.javaFXGUI;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.MenuBar;
-import javafx.scene.control.SplitPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
@@ -16,7 +14,9 @@ class MainFrameBorderPane extends BorderPane {
     Text processText=new Text();
 
 
-
+    public VBox getTablesVBox() {
+        return tablesVBox;
+    }
 
     public MainFrameBorderPane() {
         processText.setText("process will be shown here");
