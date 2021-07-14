@@ -9,6 +9,13 @@ public class TablesVBox extends VBox {
     VBox cagezVBox=new CagezVBox();
     Node spaceMiddle=new VBox();
 
+    public MiceVBox getMiceVBox(){
+        return (MiceVBox) miceVBox;
+    }
+    public CagezVBox getCagezVBox(){
+        return (CagezVBox) cagezVBox;
+    }
+
     public TablesVBox() {
         VBox.setVgrow(spaceMiddle, Priority.SOMETIMES);
         this.getChildren().addAll(miceVBox, spaceMiddle, cagezVBox);

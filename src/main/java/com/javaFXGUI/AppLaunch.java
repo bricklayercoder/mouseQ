@@ -1,5 +1,6 @@
 package com.javaFXGUI;
 
+import com.cagezz.CageZZ;
 import com.javaFXGUI.SecondaryGUI.AddNewMouseStage;
 import com.javaFXGUI.SecondaryGUI.HistoryStage;
 import javafx.application.Application;
@@ -11,11 +12,11 @@ import javafx.stage.WindowEvent;
 
 public class AppLaunch extends Application {
 
-    static BorderPane mainFrameBorderPane=new MainFrameBorderPane();
+    public static BorderPane mainFrameBorderPane=new MainFrameBorderPane();
 
     static AddNewMouseStage addNewMouseStage =new AddNewMouseStage();
-
     static HistoryStage historyStage=new HistoryStage();
+
 
     public static void main(String[] args){
         launch(args);
@@ -24,6 +25,7 @@ public class AppLaunch extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Scene scene=new Scene(mainFrameBorderPane, 1400, 1200);
+        primaryStage.setTitle("Welcome to mouseQ");
         primaryStage.setScene(scene);
         scene.getStylesheets().add(MainFrame.class.getResource("/stylesheet.css").toExternalForm());
 

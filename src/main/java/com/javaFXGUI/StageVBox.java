@@ -16,6 +16,10 @@ public class StageVBox extends VBox {
         return (SelectedMouseGridPane) selectedMouseGridPane;
     }
 
+    public SelectedCageGridPane getSelectedCageGridPane(){
+        return (SelectedCageGridPane) selectedCagezGridPane;
+    }
+
     public StageVBox() {
         this.setPrefHeight(1250);
         this.setPrefWidth(300);

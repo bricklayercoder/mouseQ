@@ -1,5 +1,6 @@
 package com.javaFXGUI;
 
+import com.cagezz.CageZZ;
 import javafx.geometry.Insets;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.BorderPane;
@@ -7,7 +8,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-class MainFrameBorderPane extends BorderPane {
+public class MainFrameBorderPane extends BorderPane {
 
     MenuBar menuBar=new MouseQMenuBar();
     VBox tablesVBox=new TablesVBox();
@@ -17,6 +18,11 @@ class MainFrameBorderPane extends BorderPane {
     public StageVBox getStageVBox(){
         return (StageVBox) stageVBox;
     }
+
+    public TablesVBox getTablesVBox(){
+        return (TablesVBox) tablesVBox;
+    }
+
 
     public MainFrameBorderPane() {
         processText.setText("process will be shown here");

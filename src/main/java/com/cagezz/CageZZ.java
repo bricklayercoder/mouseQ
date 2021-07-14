@@ -118,7 +118,6 @@ public class CageZZ {
      */
 
     public HashMap<String, Mouse> getMiceRecords(){
- //       loadMiceRecords();
         return miceRecords;
     }
     public void loadMiceRecords(){

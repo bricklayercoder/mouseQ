@@ -27,16 +27,35 @@ public class MiceVBox extends VBox {
 
     TextField searchField=new TextField();
 
-    ObservableList<Mouse> miceRecordList;
+    CageZZ workingCagez=new CageZZ();
+
+    ObservableList<Mouse> miceRecordObservableList;
     FilteredList<Mouse> filteredListOfMice;
     SortedList<Mouse> sortedListofMice;
+
 
     HBox searchMiceHBox=new SearchMiceHBox();
     TableView miceTableView=new MiceTableView();
 
+    public ObservableList<Mouse> getObservableListOfMouse(){
+        return miceRecordObservableList;
+    }
+
+    public SortedList<Mouse> getSortedListofMice(){
+        return sortedListofMice;
+    }
+
+    public CageZZ getWorkingCagez(){
+        return workingCagez;
+    }
+
 
     public MiceVBox() {
         this.getChildren().addAll(searchMiceHBox, miceTableView);
+    }
+
+    public void refreshMiceTable(){
+        miceTableView.refresh();
     }
 
 
@@ -61,16 +80,17 @@ public class MiceVBox extends VBox {
     class MiceTableView extends TableView {
 
         public void  loadMiceRecordList(){
-            miceRecordList= FXCollections.observableArrayList();
-            CageZZ cageZZ=new CageZZ();
-            cageZZ.loadMiceRecords();
-            for (Mouse mouse : cageZZ.getMiceList()){
-                miceRecordList.add(mouse);
+            miceRecordObservableList = FXCollections.observableArrayList();
+
+            workingCagez.loadMiceRecords();
+
+            for (Mouse mouse : workingCagez.getMiceList()){
+                miceRecordObservableList.add(mouse);
             }
         }
 
         public void loadFilteredListOfMice(){
-            filteredListOfMice=new FilteredList<>(miceRecordList, p -> true);
+            filteredListOfMice=new FilteredList<>(miceRecordObservableList, p -> true);
 
             searchField.setOnKeyReleased(new EventHandler<KeyEvent>() {
                 @Override

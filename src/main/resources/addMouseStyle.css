@@ -2,6 +2,46 @@
     -fx-background-color: #505150;
 }
 
+.tab-pane {
+-fx-skin: "com.sun.javafx.scene.control.skin.TabPaneSkin";
+}
+
+.tab .tab-label {
+    -fx-font-weight: bold;
+    -fx-font-size: 12pt;
+    -fx-text-fill: white;
+}
+
+.tab-content-area {
+    -fx-background-color: #505150;
+    -fx-padding: 0.0em;
+
+}
+
+.tab-pane *.tab-header-background
+{
+    -fx-background-color: #505150;
+    -fx-effect: innershadow(two-pass-box , rgba(0,0,0,0.6) , 4, 0.0 , 0 , 0);
+}
+
+.tab:top {
+    -fx-background-color: #505150;
+}
+
+.tab:selected {
+    -fx-background-color: royalblue;
+}
+
+.list-cell {
+    -fx-background-color: #505150;
+    -fx-font-family: Arial;
+    -fx-text-fill: white;
+}
+
+.list-cell:selected {
+    -fx-background-color: royalblue;
+}
+
 .label {
     -fx-background-color: #505150;
     -fx-font-size: 12pt;

@@ -4,8 +4,14 @@
 
 
 .menu-bar	 {
-        -fx-background-color: #505150;
+    -fx-background-color: #505150;
 }
+
+.menu:hover, .menu:focused, .menu:pressed {
+    -fx-background-color: royalblue;
+}
+
+
 
 .menu-item {
     -fx-background-color: #505150;
@@ -21,8 +27,7 @@
 }
 
 .context-menu {
-  -fx-background-color: #505150;
-
+    -fx-background-color: #505150;
 }
 
 .text-field {
@@ -46,17 +51,6 @@
 
 }
 
-
-.tab {
-  -fx-font-family: Arial;
-  -fx-font-size: 15;
-  -fx-background-insets: 0.3;
-  -fx-background-color: royal blue ;
-}
-
-.tab:selected {
-    -fx-background-color: royalblue ;
-}
 
 
 #processText {
@@ -189,6 +183,45 @@
     -fx-fill: white;
     -fx-font-size: 15pt;
 }
+
+#TextIDCageNumber {
+    -fx-font-smoothing-type: lcd;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-font-size: 15px;
+}
+
+#textIDStrain {
+    -fx-font-smoothing-type: lcd;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-font-size: 15px;
+}
+
+#textIDStatus {
+    -fx-font-smoothing-type: lcd;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-font-size: 15px;
+}
+
+#textIDSize {
+    -fx-font-smoothing-type: lcd;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-font-size: 15px;
+}
+
+#textIDNotes {
+    -fx-font-smoothing-type: lcd;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-font-size: 15px;
+}
+
+
+
+
 
 #processText {
     -fx-fill: white;

@@ -2,6 +2,9 @@ package com.javaFXGUI;
 
 import com.cagezz.Cage;
 import com.cagezz.CageZZ;
+import com.mouse.Mouse;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -29,8 +32,14 @@ public class CagezVBox extends VBox {
     FilteredList<Cage> filteredListOfCage;
     SortedList<Cage>    sortedListOfCage;
 
+    CageZZ workingCagez=new CageZZ();
+
     HBox searchCagezVBox=new SearchCagezHBox();
     TableView cagezTableView=new CagezTableView();
+
+    public SortedList<Cage> getSortedListOfCage(){
+        return sortedListOfCage;
+    }
 
     public CagezVBox() {
         this.getChildren().addAll(searchCagezVBox, cagezTableView);
@@ -56,9 +65,11 @@ public class CagezVBox extends VBox {
 
         public void loadCagezRecordList(){
             observableListOfCage= FXCollections.observableArrayList();
-            CageZZ cageZZ=new CageZZ();
-            cageZZ.loadMiceRecords();
-            for (Map.Entry<String, Cage> entry : cageZZ.getCageZZ().entrySet()){
+
+
+            workingCagez.loadMiceRecords();
+
+            for (Map.Entry<String, Cage> entry : workingCagez.getCageZZ().entrySet()){
                 observableListOfCage.add(entry.getValue());
             }
         }
@@ -132,12 +143,18 @@ public class CagezVBox extends VBox {
             sortedListOfCage=new SortedList<>(filteredListOfCage);
             sortedListOfCage.comparatorProperty().bind(this.comparatorProperty());
             this.setItems(sortedListOfCage);
-
+            TableView thisTableView=this;
+            this.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+                @Override
+                public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                    Cage selectedCage= (Cage) thisTableView.getSelectionModel().getSelectedItem();
+                    MainFrameBorderPane workingMainFrameBorderPane=(MainFrameBorderPane)AppLaunch.mainFrameBorderPane;
+                    StageVBox workingStageVBox=workingMainFrameBorderPane.getStageVBox();
+                    workingStageVBox.getSelectedCageGridPane().setSelectedCageAttribute(selectedCage);
+                }
+            });
 
         }
-
-
-
 
     }
 
