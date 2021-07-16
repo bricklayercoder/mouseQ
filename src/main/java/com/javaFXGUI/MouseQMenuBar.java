@@ -2,13 +2,9 @@ package com.javaFXGUI;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 
 public class MouseQMenuBar extends MenuBar {
@@ -52,7 +48,7 @@ public class MouseQMenuBar extends MenuBar {
         recordMenu.getItems().add(syncItem);
         recordMenu.getItems().add(tipsItem);
 
-        this.getMenus().addAll(mouseQMenu, fileMenu, mouseMenu, cageMenu, recordMenu);
+        this.getMenus().addAll(mouseQMenu, fileMenu, mouseMenu, recordMenu);
 
         tipsItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -62,12 +58,6 @@ public class MouseQMenuBar extends MenuBar {
             }
         });
 
-        addMouse.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                AppLaunch.addNewMouseStage.show();
 
-            }
-        });
     }
 }

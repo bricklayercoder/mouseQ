@@ -18,7 +18,7 @@
 
 }
 
-.tab-pane *.tab-header-background
+.tab-pane, *.tab-header-background
 {
     -fx-background-color: #505150;
     -fx-effect: innershadow(two-pass-box , rgba(0,0,0,0.6) , 4, 0.0 , 0 , 0);
@@ -42,6 +42,88 @@
     -fx-background-color: royalblue;
 }
 
+#tagTextId {
+    -fx-background-color: royalblue;
+    -fx-text-fill: purple;
+    -fx-font-weight: bold;
+    -fx-font-size: 13pt;
+}
+
+#motherTagFieldId {
+    -fx-background-color: royalblue;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13pt;
+}
+
+#fatherTagFieldId {
+     -fx-background-color: royalblue;
+     -fx-text-fill: white;
+     -fx-font-weight: bold;
+     -fx-font-size: 13pt;
+}
+
+#genotypeFieldId {
+    -fx-background-color: royalblue;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13pt;
+}
+
+#strainFieldId {
+    -fx-background-color: royalblue;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13pt;
+}
+
+#coatColorFieldId {
+    -fx-background-color: royalblue;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13pt;
+}
+
+#cageNumberFieldId {
+     -fx-background-color: royalblue;
+     -fx-text-fill: white;
+     -fx-font-weight: bold;
+     -fx-font-size: 13pt;
+}
+
+#notesFieldId {
+    -fx-background-color: royalblue;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13pt;
+}
+
+#dobPickerId {
+ -fx-background-color: royalblue;
+ -fx-text-fill: white;
+ -fx-font-weight: bold;
+ -fx-font-size: 13pt;
+}
+
+#weanDatePickerId {
+    -fx-background-color: royalblue;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13pt;
+}
+
+#genderComboBoxId {
+    -fx-background-color: royalblue;
+    -fx-text-fill: white;
+    -fx-font-size: 13pt;
+}
+
+#statusComboBoxId {
+    -fx-background-color: royalblue;
+    -fx-text-fill: white;
+    -fx-font-size: 13pt;
+}
+
 .label {
     -fx-background-color: #505150;
     -fx-font-size: 12pt;
@@ -61,4 +143,23 @@
 
 .button:hover {
     -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+#selectedUpdateIconText {
+    -fx-font-smoothing-type: lcd;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-font-size: 15pt;
+}
+
+#tagNumberUpdateTextField {
+    -fx-background-color: crimson;
+    -fx-text-fill: white;
+    -fx-font-size: 13pt;
+}
+
+#cageNumberUpdateTextField, #statusUpdateComboBox, #notesUpdateTextField {
+    -fx-background-color: royalblue;
+    -fx-text-fill: white;
+    -fx-font-size: 13pt;
 }

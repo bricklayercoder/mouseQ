@@ -105,8 +105,8 @@ public class SelectedMouseGridPane extends GridPane {
         this.add(notesLabel, 0, 12);
         this.add(notesText, 1, 12);
 
-        Button updateButton =new Button("_Update");
-        this.add(updateButton, 1, 14);
+//        Button updateButton =new Button("_Update");
+//        this.add(updateButton, 1, 14);
     }
 
     public void setSelectedMouseAttribute(Mouse mouse){

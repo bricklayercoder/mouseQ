@@ -3,14 +3,13 @@
 }
 
 
-.menu-bar	 {
+.menu-bar {
     -fx-background-color: #505150;
 }
 
 .menu:hover, .menu:focused, .menu:pressed {
     -fx-background-color: royalblue;
 }
-
 
 
 .menu-item {
@@ -30,16 +29,6 @@
     -fx-background-color: #505150;
 }
 
-.text-field {
-  -fx-font-size: 12pt;
-  -fx-font-weight: bold;
-}
-
-.text {
-  -fx-fill-color: white;
-}
-
-
 .tab-pane .tab-header-area .tab-header-background {
   -fx-background-color:#505150;
   -fx-tab-min-width:120px;
@@ -49,15 +38,6 @@
 
   -fx-text-box-border: purple;
 
-}
-
-
-
-#processText {
-   -fx-fill: white;
-   -fx-font-weight: bold;
-   -fx-text-fill: white;
-   -fx-font-size: 15pt;
 }
 
 .label {
@@ -173,10 +153,6 @@
     -fx-font-size: 15px;
 }
 
-
-
-
-
 #cageSelected {
     -fx-font-smoothing-type: lcd;
     -fx-font-weight: bold;
@@ -220,18 +196,12 @@
 }
 
 
-
-
-
 #processText {
     -fx-fill: white;
-    -fx-font-size: 14;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
 }
 
-.text {
-     -fx-fill: white;
-
-}
 
 .table-view {
     -fx-background-color: #505150;
@@ -287,5 +257,7 @@
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em; /* 0 */
 }
+
+
 
 
