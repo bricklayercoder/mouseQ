@@ -1,10 +1,14 @@
 package com.javaFXGUI;
 
+import com.javaFXGUI.SecondaryGUI.OpenMiceTableStage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.stage.FileChooser;
+
+import java.io.File;
 
 
 public class MouseQMenuBar extends MenuBar {
@@ -18,16 +22,14 @@ public class MouseQMenuBar extends MenuBar {
     MenuItem exitMouseQMenuItem=new MenuItem("Exit");
 
     MenuItem openFileMenuItem=new MenuItem("Open");
+    File chosenTableFile;
     MenuItem saveFileMenuItem=new MenuItem("Save");
-
-    MenuItem addMouse=new MenuItem("Add");
-    MenuItem updateMouse =new MenuItem("Update");
 
     MenuItem addCage=new MenuItem("Add");
     MenuItem updateCage=new MenuItem("Update");
 
     MenuItem syncItem=new MenuItem("Sync");
-    MenuItem tipsItem=new MenuItem("History");
+    MenuItem historyItem =new MenuItem("History");
 
 
     public MouseQMenuBar() {
@@ -42,17 +44,44 @@ public class MouseQMenuBar extends MenuBar {
         cageMenu.getItems().add(updateCage);
 
         recordMenu.getItems().add(syncItem);
-        recordMenu.getItems().add(tipsItem);
+        recordMenu.getItems().add(historyItem);
 
         this.getMenus().addAll(mouseQMenu, fileMenu, recordMenu);
 
-        tipsItem.setOnAction(new EventHandler<ActionEvent>() {
+        historyItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 AppLaunch.historyStage.show();
 
             }
         });
+
+        openFileMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                final FileChooser fileChooser=new FileChooser();
+                chosenTableFile=fileChooser.showOpenDialog(AppLaunch.openMiceTableStage);
+                if(AppLaunch.openMiceTableStage !=null ){
+                    AppLaunch.openMiceTableStage.close();
+                }
+
+                try {
+                    AppLaunch.openMiceTableStage=new OpenMiceTableStage(chosenTableFile);
+                    AppLaunch.openMiceTableStage.show();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    AppLaunch.mainFrameBorderPane.getProcessText().setText("Error Open File!");
+                    AppLaunch.mainFrameBorderPane.processText.setStyle("-fx-fill: red; -fx-font-size: 13pt;");
+                    return;
+                }
+                AppLaunch.mainFrameBorderPane.processText.setText(chosenTableFile.getName()+" opened!");
+                AppLaunch.mainFrameBorderPane.processText.setStyle("-fx-fill: white; -fx-font-size: 13pt;");
+                AppLaunch.openMiceTableStage.show();
+            }
+        });
+
+
 
 
     }

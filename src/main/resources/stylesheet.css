@@ -25,6 +25,13 @@
     -fx-background-color: royalblue;
 }
 
+#searchField {
+    -fx-background-color: royalblue;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13pt;
+}
+
 .context-menu {
     -fx-background-color: #505150;
 }
@@ -40,6 +47,15 @@
 
 }
 
+#searchLabel {
+    -fx-background-color: #505150;
+    -fx-font-size: 13pt;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( gaussian, rgba(255,255,255,0.5) , 0,0,0,1);
+}
+
 .label {
     -fx-background-color: #505150;
     -fx-font-size: 12pt;
@@ -47,8 +63,6 @@
     -fx-font-weight: bold;
     -fx-text-fill: white;
     -fx-effect: dropshadow( gaussian, rgba(255,255,255,0.5) , 0,0,0,1);
-
-
 }
 
 .button {

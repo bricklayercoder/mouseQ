@@ -5,6 +5,8 @@ Methods in this class read or write into the overall mice records table accordin
  */
 
 
+import com.mouse.Mouse;
+
 import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -71,6 +73,58 @@ public final class ReadMiceTables {
                 fileReader.close();
             }
             return arrayListOfString;
+    }
+
+    public static ArrayList<String> readMiceTable(File tableFile) throws IOException {
+        String line;
+        ArrayList<String> arrayListOfString=new ArrayList<>();
+        FileReader fileReader=new FileReader(tableFile);
+        try {
+            BufferedReader bufferedReader=new BufferedReader(fileReader);
+            while((line=bufferedReader.readLine())!=null){
+                line.trim();
+                arrayListOfString.add(line);
+            }
+            bufferedReader.close();
+            fileReader.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            fileReader.close();
+        }
+        return arrayListOfString;
+    }
+
+    public static ArrayList<Mouse> generateMiceArrayList(ArrayList<String> miceListOfString){
+        ArrayList<Mouse> arrayListOfMice=new ArrayList<>();
+        for (String str : miceListOfString){
+            String[] fieldsPerLine=str.split(",");
+            for(int i=0; i<fieldsPerLine.length; i++) {
+                fieldsPerLine[i]=fieldsPerLine[i].trim();
+            }
+            if( !fieldsPerLine[0].equals("TagNumber") ){
+                Mouse mouse=new Mouse(fieldsPerLine[0],
+                        fieldsPerLine[5],
+                        fieldsPerLine[4],
+                        fieldsPerLine[2],
+                        fieldsPerLine[1],
+                        fieldsPerLine[3]);
+
+                mouse.setCoatColour(fieldsPerLine[6]);
+                mouse.setWeanDate(fieldsPerLine[7]);
+                mouse.setNotes(fieldsPerLine[11]);
+                mouse.setCageNumber(fieldsPerLine[10]);
+                mouse.setGenotype(fieldsPerLine[8]);
+                mouse.setStatus(fieldsPerLine[9]);
+
+                arrayListOfMice.add(mouse);
+
+            }
+
+        }
+        return arrayListOfMice;
     }
 
 

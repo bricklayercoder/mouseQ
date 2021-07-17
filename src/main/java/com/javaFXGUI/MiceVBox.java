@@ -79,10 +79,12 @@ public class MiceVBox extends VBox {
 
     class SearchMiceHBox extends HBox {
 
-        Label searchLabel=new Label("Search");
+        Label searchLabel=new Label("Search:");
 
 
         public SearchMiceHBox() {
+            searchField.setId("searchField");
+            searchLabel.setId("searchLabel");
             this.setSpacing(15);
             this.setPadding(new Insets(5, 5, 5,5));
             this.setAlignment(Pos.CENTER);
@@ -801,9 +803,9 @@ public class MiceVBox extends VBox {
                 this.add(notesField, 1, 11, 1,1);
                 this.add(clearNotes, 2, 11, 1, 1);
 
-                genderComboBox.setPrefWidth(250);
-                statusComboBox.setPrefWidth(250);
-                submitButton.setPrefWidth(250);
+                genderComboBox.setPrefWidth(255);
+                statusComboBox.setPrefWidth(255);
+                submitButton.setPrefWidth(255);
 
                 this.add(indicatorLabel, 0, 13, 1, 1);
                 this.add(submitButton, 1, 13, 1, 1);
