@@ -29,7 +29,7 @@ public class SelectedMouseGridPane extends GridPane {
         this.setHgap(30); this.setVgap(10);
         this.setPadding(new Insets(5, 5, 15, 5));
 
-        Text currentText=new Text("Selected");
+        Text currentText=new Text("Selected:");
         currentText.setId("mouseSelected");
         this.add(currentText, 0, 0, 2, 1);
 

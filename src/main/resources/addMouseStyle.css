@@ -2,11 +2,8 @@
     -fx-background-color: #505150;
 }
 
-.tab-pane {
--fx-skin: "com.sun.javafx.scene.control.skin.TabPaneSkin";
-}
 
-.tab .tab-label {
+.tab, .tab-label {
     -fx-font-weight: bold;
     -fx-font-size: 12pt;
     -fx-text-fill: white;
@@ -30,6 +27,14 @@
 
 .tab:selected {
     -fx-background-color: royalblue;
+}
+
+.tab:bottom {
+    -fx-background-color: #505150;
+}
+
+.list-view: {
+    -fx-background-color: #505150;
 }
 
 .list-cell {

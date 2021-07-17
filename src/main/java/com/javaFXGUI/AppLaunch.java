@@ -1,18 +1,22 @@
 package com.javaFXGUI;
 
+import com.cagezz.Utilities;
 import com.javaFXGUI.SecondaryGUI.HistoryStage;
+import com.mouse.Mouse;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+import java.util.ArrayList;
+
+
 public class AppLaunch extends Application {
 
     public static MainFrameBorderPane mainFrameBorderPane =new MainFrameBorderPane();
 
     static HistoryStage historyStage=new HistoryStage();
-
 
     public static void main(String[] args){
         launch(args);
@@ -28,8 +32,14 @@ public class AppLaunch extends Application {
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
-               historyStage.close();
+                historyStage.close();
+
+                ArrayList<Mouse> miceArrayList= new ArrayList<>();
+                for (Mouse mouse :mainFrameBorderPane.miceVBox.miceRecordObservableList)
+                        miceArrayList.add(mouse);
+                Utilities.createMiceRecordTableFile(miceArrayList);
             }
+
         });
 
         primaryStage.show();

@@ -19,12 +19,10 @@ import java.util.Date;
 /*
         The tables that store mouse records are persistent in the following directory structures:
 
-           user.home/Downloads/mouseQTables/Date1.txt
-                                           /date2.txt
-                                           /date3.txt
-                                           /date..txt
-        Each column field is 18 chars or 18 bytes of size
-
+           user.home/Downloads/mouseQHome/mouseQTables/Date1.txt
+                                                      /date2.txt
+                                                      /date3.txt
+                                                      /date..txt
         date is in the format of yyyy-MM-dd hh-mm
 */
 
@@ -133,19 +131,18 @@ public final class Utilities {
                 /*
         Write the column headers
          */
-        sb.append(rightPadWhiteSpaces("TagNumber,", 18));
-        sb.append(rightPadWhiteSpaces("Gender,"   , 18));
-        sb.append(rightPadWhiteSpaces("BirthDate,", 18));
-        sb.append(rightPadWhiteSpaces("Strain",     18));
-        sb.append(rightPadWhiteSpaces("Father,"   , 18));
-        sb.append(rightPadWhiteSpaces("Mother,"   , 18));
-        sb.append(rightPadWhiteSpaces("CoatColour,",18));
-        sb.append(rightPadWhiteSpaces("WeanDate,",  18));
-        sb.append(rightPadWhiteSpaces("Genotype," , 18));
-        sb.append(rightPadWhiteSpaces("Status,"   , 18));
-        sb.append(rightPadWhiteSpaces("CageNumber," , 18));
-        sb.append(rightPadWhiteSpaces("Notes,"      , 18));
-        //       sb.append(System.getProperty("line.separator"));
+        sb.append("TagNumber,");
+        sb.append("Gender," );
+        sb.append("BirthDate,");
+        sb.append("Strain,");
+        sb.append("Father,");
+        sb.append("Mother,");
+        sb.append("CoatColour,");
+        sb.append("WeanDate,");
+        sb.append("Genotype,");
+        sb.append("Status,"  );
+        sb.append("CageNumber,");
+        sb.append("Notes,");
         sb.append("\n");
 
 //        return created;
@@ -159,19 +156,18 @@ public final class Utilities {
          */
         for(Mouse mouse : mice) {
 
-            sb.append(rightPadWhiteSpaces(mouse.getTagNumber()         +",", 18));
-            sb.append(rightPadWhiteSpaces(mouse.getGender()            +",", 18));
-            sb.append(rightPadWhiteSpaces(mouse.getBirthDate()         +",", 18));
-            sb.append(rightPadWhiteSpaces(mouse.getStrain()            +",", 18));
-            sb.append(rightPadWhiteSpaces(mouse.getPaternalTagNumber() +",", 18));
-            sb.append(rightPadWhiteSpaces(mouse.getMaternalTagNumber() +",", 18));
-            sb.append(rightPadWhiteSpaces(mouse.getCoatColour()        +",",18));
-            sb.append(rightPadWhiteSpaces(mouse.getWeanDate()          +",", 18));
-            sb.append(rightPadWhiteSpaces(mouse.getGenotype()          +",", 18));
-            sb.append(rightPadWhiteSpaces(mouse.getStatus()            +",", 18));
-            sb.append(rightPadWhiteSpaces(mouse.getCageNumber()        +",", 18));
-            sb.append(rightPadWhiteSpaces(mouse.getNotes()             +",", 18));
-//            sb.append(System.getProperty("line.separator"));
+            sb.append(mouse.getTagNumber()         +",");
+            sb.append(mouse.getGender()            +",");
+            sb.append(mouse.getBirthDate()         +",");
+            sb.append(mouse.getStrain()            +",");
+            sb.append(mouse.getPaternalTagNumber() +",");
+            sb.append(mouse.getMaternalTagNumber() +",");
+            sb.append(mouse.getCoatColour()        +",");
+            sb.append(mouse.getWeanDate()          +",");
+            sb.append(mouse.getGenotype()          +",");
+            sb.append(mouse.getStatus()            +",");
+            sb.append(mouse.getCageNumber()        +",");
+            sb.append(mouse.getNotes()             +",");
             sb.append("\n");
         }
         try {

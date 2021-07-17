@@ -11,7 +11,6 @@ public class MouseQMenuBar extends MenuBar {
 
     Menu mouseQMenu=new Menu("mouseQ");
     Menu fileMenu=new Menu("File");
-    Menu mouseMenu=new Menu("Mouse");
     Menu cageMenu=new Menu("Cage");
     Menu recordMenu=new Menu("Record");
 
@@ -39,16 +38,13 @@ public class MouseQMenuBar extends MenuBar {
         fileMenu.getItems().add(openFileMenuItem);
         fileMenu.getItems().add(saveFileMenuItem);
 
-        mouseMenu.getItems().add(addMouse);
-        mouseMenu.getItems().add(updateMouse);
-
         cageMenu.getItems().add(addCage);
         cageMenu.getItems().add(updateCage);
 
         recordMenu.getItems().add(syncItem);
         recordMenu.getItems().add(tipsItem);
 
-        this.getMenus().addAll(mouseQMenu, fileMenu, mouseMenu, recordMenu);
+        this.getMenus().addAll(mouseQMenu, fileMenu, recordMenu);
 
         tipsItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
