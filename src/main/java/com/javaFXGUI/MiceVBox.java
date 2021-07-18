@@ -994,6 +994,7 @@ public class MiceVBox extends VBox {
                 clearNotesButton=new Button("Clear"),
                 updateButton=new Button("Update Mouse");
 
+
         public void setTagNumberTextField(String s){
             tagNumberTextField.setText(s);
         }
