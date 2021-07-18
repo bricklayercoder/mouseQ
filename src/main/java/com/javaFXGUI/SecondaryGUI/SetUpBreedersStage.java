@@ -18,9 +18,9 @@ public class SetUpBreedersStage extends Stage {
 
     public ObservableList<String> malesTagNumberObservableList= FXCollections.observableArrayList();
     public ObservableList<String> femalesTagNumberObservableList=FXCollections.observableArrayList();
-    public ObservableList<String> cageTagNumberObservableList=FXCollections.observableArrayList();
+    public ObservableList<String> cageNumberObservableList =FXCollections.observableArrayList();
 
-    final BreederPickerTabPane breederPickerTabPane=new BreederPickerTabPane();
+    public final BreederPickerTabPane breederPickerTabPane=new BreederPickerTabPane();
 
 
     final VBox selectButtonsVBox=new VBox();
@@ -35,11 +35,20 @@ public class SetUpBreedersStage extends Stage {
     final FemaleBreedersListView femaleBreedersListView =new FemaleBreedersListView();
     final Text cageIndicatorText=new Text("Breeding Cage:"),
                maleIndicatorText=new Text("Male Breeder:"),
-               femaleIndicatorText=new Text("Female Breeder:");
+               femaleIndicatorText=new Text("Female Breeders:");
 
     final Button submitButton=new Button("Submit");
 
     HBox root=new HBox();
+    public void refreshCageListView(){
+        breederPickerTabPane.cagesListView.refresh();
+    }
+    public void refreshMalesListView(){
+        breederPickerTabPane.malesListView.refresh();
+    }
+    public void refreshFemalesListView(){
+        breederPickerTabPane.femalesListView.refresh();
+    }
 
 
     class MalesListView extends ListView<String> {
@@ -72,12 +81,12 @@ public class SetUpBreedersStage extends Stage {
     class CagesListView extends ListView<String>{
 
         public CagesListView() {
-            cageTagNumberObservableList.add("Anonym");
+            cageNumberObservableList.add("Anonym");
             for(Mouse mouse : miceList){
-                if(!cageTagNumberObservableList.contains(mouse.getCageNumber()))
-                    cageTagNumberObservableList.add(mouse.getCageNumber());
+                if(!cageNumberObservableList.contains(mouse.getCageNumber()))
+                    cageNumberObservableList.add(mouse.getCageNumber());
             }
-            this.setItems(cageTagNumberObservableList);
+            this.setItems(cageNumberObservableList);
         }
     }
 
@@ -85,6 +94,7 @@ public class SetUpBreedersStage extends Stage {
         ObservableList<String> femaleBreedersObservableList =FXCollections.observableArrayList();
 
         public FemaleBreedersListView() {
+            femaleBreedersObservableList.add("");
             this.setItems(femaleBreedersObservableList);
         }
     }
@@ -132,8 +142,14 @@ public class SetUpBreedersStage extends Stage {
         selectedFieldsVBox.getChildren().add(femaleBreedersListView);
         selectedFieldsVBox.getChildren().add(submitButton);
 
+        cageIndicatorText.setId("cageIndicatorText");
+        cageField.setId("cageField");
+        maleIndicatorText.setId("maleIndicatorText");
+        maleBreederField.setId("maleBreederField");
+        femaleIndicatorText.setId("femaleIndicatorText");
+
         root.setPrefWidth(700);
-        root.setPrefHeight(600);
+        root.setPrefHeight(635);
         root.setAlignment(Pos.CENTER);
         root.setSpacing(20);
 
@@ -151,9 +167,12 @@ public class SetUpBreedersStage extends Stage {
         root.getChildren().add(breederPickerTabPane);
         root.getChildren().add(selectButtonsVBox);
         root.getChildren().add(selectedFieldsVBox);
+        root.getStylesheets().add(SetUpBreedersStage.class.getResource("/SetUpBreedersStyleSheet.css").toExternalForm());
         Scene scene=new Scene(root);
         this.setScene(scene);
+        this.setTitle("Set Up Breeder Cage");
         this.setAlwaysOnTop(true);
+        this.setResizable(false);
 
     }
 }

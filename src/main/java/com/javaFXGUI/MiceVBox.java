@@ -925,6 +925,24 @@ public class MiceVBox extends VBox {
 
                         }
                         refreshMiceTable();
+                        if (newMouse.getGender().toLowerCase().equals("male")){
+                            if(!AppLaunch.setUpBreedersStage.malesTagNumberObservableList.contains(newMouse.getTagNumber())){
+                                AppLaunch.setUpBreedersStage.malesTagNumberObservableList.add(newMouse.getTagNumber());
+                                AppLaunch.setUpBreedersStage.refreshMalesListView();
+                            }
+                        }
+
+                        if(newMouse.getGender().toLowerCase().equals("female")){
+                            if(!AppLaunch.setUpBreedersStage.femalesTagNumberObservableList.contains(newMouse.getTagNumber())){
+                                AppLaunch.setUpBreedersStage.femalesTagNumberObservableList.add(newMouse.getTagNumber());
+                                AppLaunch.setUpBreedersStage.refreshFemalesListView();
+                            }
+                        }
+
+                        if(!AppLaunch.setUpBreedersStage.cageNumberObservableList.contains(newMouse.getCageNumber())){
+                            AppLaunch.setUpBreedersStage.cageNumberObservableList.add(newMouse.getCageNumber());
+                            AppLaunch.setUpBreedersStage.refreshCageListView();
+                        }
 
                         if (newMouse.getGender().toLowerCase().equals("male")) {
                             chooseVariousDataTabPane.malesListView.malesTagNumberObservableList.add(newMouse.getTagNumber());
@@ -1139,6 +1157,12 @@ public class MiceVBox extends VBox {
                     }
 
                     refreshMiceTable();
+
+                    if (!AppLaunch.setUpBreedersStage.cageNumberObservableList.contains(updateModelMouse.getCageNumber())){
+                        AppLaunch.setUpBreedersStage.cageNumberObservableList.add(updateModelMouse.getCageNumber());
+                        AppLaunch.setUpBreedersStage.refreshCageListView();
+                    }
+
                     AppLaunch.mainFrameBorderPane.getProcessText().setText("Update mouse: "+selectedMouse.getTagNumber()+" successfully.");
                     AppLaunch.mainFrameBorderPane.getProcessText().setStyle("-fx-fill: white; -fx-font-size: 13pt;");
 
