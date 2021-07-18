@@ -104,33 +104,15 @@ public final class Utilities {
             } catch (IOException e) {
                 System.out.println(e);
             }
-                return created;
         }
+        return created;
     }
 
 
-    /*
-        In a given date, if the mice table file corresponding to that date exist, return.
-        otherwise, create this file and populate it with mice records.
-         */
-    private static StringBuilder sb=new StringBuilder();
-    static boolean created =false;
-    static String dir= tablesFolderDir + File.separator + parsedDateString()+".txt";
-    static File tableFile=new File(dir);
-    private static void appendTableHeader(){
+    public static boolean createMiceRecordTableFile(ArrayList<Mouse> mice){
+        StringBuilder sb=new StringBuilder();
+        boolean created =false;
 
-        if (tableFile.exists()) { }
-        else {
-            try {
-                tableFile.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-                /*
-        Write the column headers
-         */
         sb.append("TagNumber,");
         sb.append("Gender," );
         sb.append("BirthDate,");
@@ -145,12 +127,9 @@ public final class Utilities {
         sb.append("Notes,");
         sb.append("\n");
 
-//        return created;
-    }
+        String dir= tablesFolderDir + File.separator + parsedDateString()+".txt";
+        File tableFile=new File(dir);
 
-    public static boolean createMiceRecordTableFile(ArrayList<Mouse> mice){
-
-        appendTableHeader();
         /*
         populate the table with mice data
          */

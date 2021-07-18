@@ -29,6 +29,8 @@ public class AppLaunch extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Utilities.createMouseQHomeFolder();
+        Utilities.createMouseQTablesFolder();
         Scene scene=new Scene(mainFrameBorderPane, 1500, 1200);
         primaryStage.setTitle("Welcome to mouseQ");
         AppLaunch.primaryStage=primaryStage;

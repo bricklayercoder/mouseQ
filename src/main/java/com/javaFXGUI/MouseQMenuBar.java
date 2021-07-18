@@ -1,6 +1,8 @@
 package com.javaFXGUI;
 
+import com.cagezz.Utilities;
 import com.javaFXGUI.SecondaryGUI.OpenMiceTableStage;
+import com.mouse.Mouse;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
@@ -9,6 +11,7 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.util.ArrayList;
 
 
 public class MouseQMenuBar extends MenuBar {
@@ -23,7 +26,6 @@ public class MouseQMenuBar extends MenuBar {
 
     MenuItem openFileMenuItem=new MenuItem("Open");
     File chosenTableFile;
-    MenuItem saveFileMenuItem=new MenuItem("Save");
 
     MenuItem addCage=new MenuItem("Add");
     MenuItem updateCage=new MenuItem("Update");
@@ -38,7 +40,6 @@ public class MouseQMenuBar extends MenuBar {
         mouseQMenu.getItems().add(exitMouseQMenuItem);
 
         fileMenu.getItems().add(openFileMenuItem);
-        fileMenu.getItems().add(saveFileMenuItem);
 
         cageMenu.getItems().add(addCage);
         cageMenu.getItems().add(updateCage);
@@ -64,6 +65,7 @@ public class MouseQMenuBar extends MenuBar {
                 if(AppLaunch.openMiceTableStage !=null ){
                     AppLaunch.openMiceTableStage.close();
                 }
+                System.out.println("OpenMiceTableStage is null.");
 
                 try {
                     AppLaunch.openMiceTableStage=new OpenMiceTableStage(chosenTableFile);
@@ -78,6 +80,37 @@ public class MouseQMenuBar extends MenuBar {
                 AppLaunch.mainFrameBorderPane.processText.setText(chosenTableFile.getName()+" opened!");
                 AppLaunch.mainFrameBorderPane.processText.setStyle("-fx-fill: white; -fx-font-size: 13pt;");
                 AppLaunch.openMiceTableStage.show();
+            }
+        });
+
+        syncItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ArrayList<Mouse> miceArrayList= new ArrayList<>();
+                for (Mouse mouse : AppLaunch.mainFrameBorderPane.miceVBox.miceRecordObservableList){
+                    miceArrayList.add(mouse);
+                }
+                String fileName=Utilities.parsedDateString()+".txt";
+                boolean created=Utilities.createMiceRecordTableFile(miceArrayList);
+                if(created=true) {
+                    AppLaunch.mainFrameBorderPane.processText.setText("Mice Table " + fileName + " written into file successfully.");
+                    AppLaunch.mainFrameBorderPane.processText.setStyle("-fx-fill: white; -fx-font-size: 13pt;");
+                    AppLaunch.historyStage.sbCounter++;
+                    AppLaunch.historyStage.sb.append(AppLaunch.historyStage.sbCounter + ", " + "  table ------" + fileName + "------ written to file\n\n");
+                    AppLaunch.historyStage.setHistoryText(AppLaunch.historyStage.sb.toString());
+                }
+            }
+        });
+
+        exitMouseQMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ArrayList<Mouse> miceArrayList= new ArrayList<>();
+                for (Mouse mouse : AppLaunch.mainFrameBorderPane.miceVBox.miceRecordObservableList){
+                    miceArrayList.add(mouse);
+                }
+                Utilities.createMiceRecordTableFile(miceArrayList);
+                AppLaunch.primaryStage.close();
             }
         });
 
