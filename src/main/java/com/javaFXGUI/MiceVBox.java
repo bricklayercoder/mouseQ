@@ -994,6 +994,8 @@ public class MiceVBox extends VBox {
                 clearNotesButton=new Button("Clear"),
                 updateButton=new Button("Update Mouse");
 
+        Button setUpMatingCageButton=new Button("Set Up Mating Cage");
+
         public void setTagNumberTextField(String s){
             tagNumberTextField.setText(s);
         }
@@ -1087,6 +1089,8 @@ public class MiceVBox extends VBox {
 
             this.add(indicatorLabel, 0, 6, 1, 1);
             this.add(updateButton, 1, 6, 1, 1);
+
+            this.add(setUpMatingCageButton, 1, 7, 1, 1);
 
             this.getStylesheets().add(MiceVBox.class.getResource("/addMouseStyle.css").toExternalForm());
             this.setStyle("-fx-background-color: #505150;");
