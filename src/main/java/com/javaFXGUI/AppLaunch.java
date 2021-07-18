@@ -4,10 +4,18 @@ import com.cagezz.Utilities;
 import com.javaFXGUI.SecondaryGUI.AboutStage;
 import com.javaFXGUI.SecondaryGUI.HistoryStage;
 import com.javaFXGUI.SecondaryGUI.OpenMiceTableStage;
+import com.javaFXGUI.SecondaryGUI.SetUpBreedersStage;
 import com.mouse.Mouse;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -23,6 +31,7 @@ public class AppLaunch extends Application {
     static HistoryStage historyStage=new HistoryStage();
     static OpenMiceTableStage openMiceTableStage;
     static AboutStage aboutStage=new AboutStage();
+    static SetUpBreedersStage setUpBreedersStage=new SetUpBreedersStage();
 
     public static void main(String[] args){
         launch(args);
@@ -62,4 +71,6 @@ public class AppLaunch extends Application {
 
         primaryStage.show();
     }
+
+
 }

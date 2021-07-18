@@ -1,7 +1,6 @@
 package com.javaFXGUI;
 
 import com.cagezz.Utilities;
-import com.javaFXGUI.SecondaryGUI.AboutStage;
 import com.javaFXGUI.SecondaryGUI.OpenMiceTableStage;
 import com.mouse.Mouse;
 import javafx.event.ActionEvent;
@@ -33,6 +32,7 @@ public class MouseQMenuBar extends MenuBar {
 
     MenuItem syncItem=new MenuItem("Sync");
     MenuItem historyItem =new MenuItem("History");
+    MenuItem setUpMatingCageItem =new MenuItem("Set Up Mating Cage");
 
 
     public MouseQMenuBar() {
@@ -45,6 +45,7 @@ public class MouseQMenuBar extends MenuBar {
         cageMenu.getItems().add(addCage);
         cageMenu.getItems().add(updateCage);
 
+        recordMenu.getItems().add(setUpMatingCageItem);
         recordMenu.getItems().add(syncItem);
         recordMenu.getItems().add(historyItem);
 
@@ -119,6 +120,13 @@ public class MouseQMenuBar extends MenuBar {
             @Override
             public void handle(ActionEvent event) {
                 AppLaunch.aboutStage.show();
+            }
+        });
+
+        setUpMatingCageItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                AppLaunch.setUpBreedersStage.show();
             }
         });
 
