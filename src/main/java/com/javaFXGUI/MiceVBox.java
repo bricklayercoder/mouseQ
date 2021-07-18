@@ -49,7 +49,7 @@ public class MiceVBox extends VBox {
     MiceTableView miceTableView=new MiceTableView();
 
     HBox miceTableViewAndSelectedMouseHBox =new MiceTableViewAndSelectedMouseHBox();
-    AddNewMouseAndUpdateMouseHBox addNewMouseAndUpdateMouseHBox =new AddNewMouseAndUpdateMouseHBox();
+    public AddNewMouseAndUpdateMouseHBox addNewMouseAndUpdateMouseHBox =new AddNewMouseAndUpdateMouseHBox();
 
 
     public ObservableList<Mouse> getObservableListOfMouse(){
@@ -269,13 +269,13 @@ public class MiceVBox extends VBox {
 
     }
 
-    class AddNewMouseAndUpdateMouseHBox extends HBox {
+    public class AddNewMouseAndUpdateMouseHBox extends HBox {
 
-        ChooseVariousDataTabPane chooseVariousDataTabPane =new ChooseVariousDataTabPane();
+        public ChooseVariousDataTabPane chooseVariousDataTabPane =new ChooseVariousDataTabPane();
         AddingNewMouseGridPane addingNewMouseGridPane=new AddingNewMouseGridPane();
         ChooserAndAddMouseHBox chooserAndAddMouseHBox=new ChooserAndAddMouseHBox();
 
-        CageAndNotesPickerTabPane cageAndNotesPickerTabPane=new CageAndNotesPickerTabPane();
+        public CageAndNotesPickerTabPane cageAndNotesPickerTabPane=new CageAndNotesPickerTabPane();
         PickersAndUpdateHBox pickersAndUpdateHBox=new PickersAndUpdateHBox();
 
         /**
@@ -290,7 +290,7 @@ public class MiceVBox extends VBox {
         }
 
 
-        class CageAndNotesPickerTabPane extends TabPane{
+        public class CageAndNotesPickerTabPane extends TabPane{
             Tab cagePickerTab=new Tab("Cages");
             Tab notesPickerTab=new Tab("Notes");
 
@@ -310,8 +310,8 @@ public class MiceVBox extends VBox {
         /**
          *  CagePickerListView specific for update mouse
          */
-        class CagePickerListView extends ListView<String>{
-            ObservableList<String> cageNumberObservableList=FXCollections.observableArrayList();
+        public class CagePickerListView extends ListView<String>{
+            public ObservableList<String> cageNumberObservableList=FXCollections.observableArrayList();
 
             public CagePickerListView() {
                 cageNumberObservableList.add("Anonym");
@@ -412,13 +412,13 @@ public class MiceVBox extends VBox {
         }
 
         public class CagesListView extends ListView<String>{
-            ObservableList<String> cageTagNumberObservableList=FXCollections.observableArrayList();
+            public ObservableList<String> cageNumberObservableList =FXCollections.observableArrayList();
 
             public CagesListView() {
-                cageTagNumberObservableList.add("Anonym");
+                cageNumberObservableList.add("Anonym");
                 for(Mouse mouse : getObservableListOfMouse()){
-                    if(!cageTagNumberObservableList.contains(mouse.getCageNumber()))
-                        cageTagNumberObservableList.add(mouse.getCageNumber());
+                    if(!cageNumberObservableList.contains(mouse.getCageNumber()))
+                        cageNumberObservableList.add(mouse.getCageNumber());
                 }
                 this.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
                     @Override
@@ -426,7 +426,7 @@ public class MiceVBox extends VBox {
                         addingNewMouseGridPane.setCageNumberField(newValue);
                     }
                 });
-                this.setItems(cageTagNumberObservableList);
+                this.setItems(cageNumberObservableList);
             }
         }
 
@@ -444,7 +444,7 @@ public class MiceVBox extends VBox {
             GenotypeListView genotypeListView=new GenotypeListView();
             StrainListView strainListView=new StrainListView();
             CoatColorListView coatColorListView=new CoatColorListView();
-            CagesListView cagesListView=new CagesListView();
+            public CagesListView cagesListView=new CagesListView();
             NotesListView notesListView=new NotesListView();
 
             void refreshListViews(){
@@ -962,8 +962,8 @@ public class MiceVBox extends VBox {
                             chooseVariousDataTabPane.coatColorListView.coatColorObservableList.add(newMouse.getCoatColour());
                         }
 
-                        if (!chooseVariousDataTabPane.cagesListView.cageTagNumberObservableList.contains(newMouse.getCageNumber())){
-                            chooseVariousDataTabPane.cagesListView.cageTagNumberObservableList.add(newMouse.getCageNumber());
+                        if (!chooseVariousDataTabPane.cagesListView.cageNumberObservableList.contains(newMouse.getCageNumber())){
+                            chooseVariousDataTabPane.cagesListView.cageNumberObservableList.add(newMouse.getCageNumber());
                         }
 
                         if (!chooseVariousDataTabPane.notesListView.notesObservableList.contains(newMouse.getNotes())){
@@ -1188,9 +1188,9 @@ public class MiceVBox extends VBox {
                      *  add updated cage and notes information to AddNewMouse's chooseVariousDataTabPane's cagesListview and notesListView
                      */
                     if(!addNewMouseAndUpdateMouseHBox.chooseVariousDataTabPane.
-                            cagesListView.cageTagNumberObservableList.contains(updateModelMouse.getCageNumber())){
+                            cagesListView.cageNumberObservableList.contains(updateModelMouse.getCageNumber())){
                         addNewMouseAndUpdateMouseHBox.chooseVariousDataTabPane.
-                                cagesListView.cageTagNumberObservableList.add(updateModelMouse.getCageNumber());
+                                cagesListView.cageNumberObservableList.add(updateModelMouse.getCageNumber());
                         addNewMouseAndUpdateMouseHBox.chooseVariousDataTabPane.
                                 cagesListView.refresh();
                     }

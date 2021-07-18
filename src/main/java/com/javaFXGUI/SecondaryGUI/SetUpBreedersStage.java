@@ -1,9 +1,15 @@
 package com.javaFXGUI.SecondaryGUI;
 
+import com.cagezz.Status;
 import com.javaFXGUI.AppLaunch;
+import com.models.ModelBreeders;
 import com.mouse.Mouse;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -12,6 +18,10 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import javax.jws.WebParam;
+import java.util.ArrayList;
+import java.util.Locale;
 
 public class SetUpBreedersStage extends Stage {
     ObservableList<Mouse> miceList= AppLaunch.mainFrameBorderPane.miceVBox.getObservableListOfMouse();
@@ -100,6 +110,8 @@ public class SetUpBreedersStage extends Stage {
     }
 
     class BreederPickerTabPane extends TabPane {
+
+
         Tab malePickerTab=new Tab("Males");
         Tab femalePickerTab=new Tab("Females");
         Tab cagePickerTab=new Tab("Cages");
@@ -113,15 +125,143 @@ public class SetUpBreedersStage extends Stage {
             femalePickerTab.setContent(femalesListView);
             cagePickerTab.setContent(cagesListView);
 
+            this.getTabs().add(cagePickerTab);
             this.getTabs().add(malePickerTab);
             this.getTabs().add(femalePickerTab);
-            this.getTabs().add(cagePickerTab);
 
             this.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
         }
     }
 
+    private String  validateUserInput(){
+        String errorMsg=null;
+        if (cageField.getText().trim().isEmpty()){
+            errorMsg="Error Breeding. The cage-number is empty.";
+            return errorMsg;
+        }
+        if(maleBreederField.getText().trim().isEmpty()){
+            errorMsg="Error Breeding. The male breeder tag-number is empty.";
+            return errorMsg;
+        }
+
+        if (femaleBreedersListView.femaleBreedersObservableList.size() ==1){
+            errorMsg="Error Breeding. The female breeders are empty.";
+        }
+
+        return errorMsg;
+    }
+
+    private ModelBreeders collectUserInput(){
+        String cageNumber=cageField.getText().trim();
+        String maleTagNumber=maleBreederField.getText().trim();
+        ArrayList<String> femaleBreedersTagNumbers=new ArrayList<>();
+        for (String tagNumber : femaleBreedersListView.femaleBreedersObservableList){
+            if (!tagNumber.isEmpty()){
+                femaleBreedersTagNumbers.add(tagNumber);
+            }
+        }
+        return new ModelBreeders(cageNumber, maleTagNumber, femaleBreedersTagNumbers);
+
+    }
+
     public SetUpBreedersStage() {
+
+        selectCageButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                String cageNumber=breederPickerTabPane.cagesListView.getSelectionModel().getSelectedItem();
+                cageField.setText(cageNumber);
+            }
+        });
+
+        selectMaleButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                String selectedMale=breederPickerTabPane.malesListView.getSelectionModel().getSelectedItem();
+                maleBreederField.setText(selectedMale);
+            }
+        });
+
+        selectFemaleButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                String selectedFemale=breederPickerTabPane.femalesListView.getSelectionModel().getSelectedItem();
+                if (selectedFemale !=null ){
+                    femaleBreedersListView.femaleBreedersObservableList.add(selectedFemale);
+                }
+                femaleBreedersListView.refresh();
+            }
+        });
+
+        removeFemaleButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                String selectedFemaleBreeder=femaleBreedersListView.getSelectionModel().getSelectedItem();
+                if (!selectedFemaleBreeder.isEmpty()){
+                    femaleBreedersListView.femaleBreedersObservableList.remove(selectedFemaleBreeder);
+                }
+                femaleBreedersListView.refresh();
+            }
+        });
+
+        submitButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                String errorMsg=validateUserInput();
+                if (errorMsg!=null){
+                    AppLaunch.mainFrameBorderPane.getProcessText().setText(errorMsg);
+                    AppLaunch.mainFrameBorderPane.getProcessText().setStyle("-fx-fill: red; -fx-font-size: 13pt;");
+                    return;
+                }
+                ModelBreeders modelBreeders=collectUserInput();
+                for (Mouse mouse : AppLaunch.mainFrameBorderPane.miceVBox.getObservableListOfMouse()){
+                    System.out.println("inside breeding submit");
+                    System.out.println(mouse.getTagNumber());
+                    System.out.println(modelBreeders.getMaleBreederTagNumber());
+                    if (mouse.getTagNumber().equals(modelBreeders.getMaleBreederTagNumber())){
+                        System.out.println(mouse.getTagNumber());
+                        mouse.setStatus(Status.MATING.toString());
+                        mouse.setCageNumber(modelBreeders.getCageNumber());
+                    }
+                    for (String femaleBreeder : modelBreeders.getFemaleBreedersList()){
+                        if(mouse.getTagNumber().equals(femaleBreeder)){
+                            System.out.println(mouse.getTagNumber());
+                            mouse.setStatus(Status.MATING.toString());
+                            mouse.setCageNumber(modelBreeders.getCageNumber());
+                        }
+                    }
+                }
+
+                AppLaunch.mainFrameBorderPane.miceVBox.refreshMiceTable();
+
+                ObservableList<String> observableListOfCageNumbersForAddMouse=
+                AppLaunch.mainFrameBorderPane.miceVBox.addNewMouseAndUpdateMouseHBox.chooseVariousDataTabPane.cagesListView.cageNumberObservableList;
+                if (!observableListOfCageNumbersForAddMouse.contains(modelBreeders.getCageNumber())){
+                    observableListOfCageNumbersForAddMouse.add(modelBreeders.getCageNumber());
+                    AppLaunch.mainFrameBorderPane.miceVBox.addNewMouseAndUpdateMouseHBox.chooseVariousDataTabPane.cagesListView.refresh();
+                }
+
+                ObservableList<String> observableListOfCageNumbersForUpdateMouse=
+                AppLaunch.mainFrameBorderPane.miceVBox.addNewMouseAndUpdateMouseHBox.cageAndNotesPickerTabPane.cagesListView.cageNumberObservableList;
+                if(!observableListOfCageNumbersForUpdateMouse.contains(modelBreeders.getCageNumber())){
+                    observableListOfCageNumbersForUpdateMouse.add(modelBreeders.getCageNumber());
+                    AppLaunch.mainFrameBorderPane.miceVBox.addNewMouseAndUpdateMouseHBox.cageAndNotesPickerTabPane.cagesListView.refresh();
+                }
+
+                AppLaunch.mainFrameBorderPane.getProcessText().setText("Set up breeding cage " + modelBreeders.getCageNumber()+ " successfully.");
+                AppLaunch.mainFrameBorderPane.getProcessText().setStyle("-fx-fill: white; -fx-font-size: 13pt;");
+                AppLaunch.historyStage.sbCounter++;
+                String s=AppLaunch.historyStage.sbCounter + ",   Set up breeding cage ------" + modelBreeders.getCageNumber() +"------ successfully.\n";
+                     s+="                    Male breeder:           " + modelBreeders.getMaleBreederTagNumber()+"\n";
+                for (String femaleBreederTagNumber : modelBreeders.getFemaleBreedersList()){
+                     s+= "                    Female breeder:      " + femaleBreederTagNumber +"\n";
+                }
+                s+="\n";
+                AppLaunch.historyStage.sb.append(s);
+                AppLaunch.historyStage.setHistoryText(AppLaunch.historyStage.sb.toString());
+            }
+        });
+
         VBox topSpace=new VBox();
         VBox.setVgrow(topSpace, Priority.SOMETIMES);
         VBox bottomSpace=new VBox();
@@ -138,6 +278,7 @@ public class SetUpBreedersStage extends Stage {
         selectedFieldsVBox.getChildren().add(cageField);
         selectedFieldsVBox.getChildren().add(maleIndicatorText);
         selectedFieldsVBox.getChildren().add(maleBreederField);
+        maleBreederField.setEditable(false);
         selectedFieldsVBox.getChildren().add(femaleIndicatorText);
         selectedFieldsVBox.getChildren().add(femaleBreedersListView);
         selectedFieldsVBox.getChildren().add(submitButton);

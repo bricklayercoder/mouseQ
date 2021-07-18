@@ -90,7 +90,7 @@
     -fx-font-size: 13pt;
 }
 
-.scroll-pane > .viewport {
+.list-view > .viewport {
     -fx-background-color: #505150;
 }
 

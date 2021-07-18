@@ -28,7 +28,7 @@ public class AppLaunch extends Application {
 
     public static MainFrameBorderPane mainFrameBorderPane =new MainFrameBorderPane();
 
-    static HistoryStage historyStage=new HistoryStage();
+    public static HistoryStage historyStage=new HistoryStage();
     static OpenMiceTableStage openMiceTableStage;
     static AboutStage aboutStage=new AboutStage();
     static SetUpBreedersStage setUpBreedersStage=new SetUpBreedersStage();
@@ -59,6 +59,10 @@ public class AppLaunch extends Application {
 
                 if (aboutStage !=null ){
                     aboutStage.close();
+                }
+
+                if(setUpBreedersStage !=null ){
+                    setUpBreedersStage.close();
                 }
 
                 ArrayList<Mouse> miceArrayList= new ArrayList<>();
