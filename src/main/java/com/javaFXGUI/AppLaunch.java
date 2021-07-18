@@ -1,6 +1,7 @@
 package com.javaFXGUI;
 
 import com.cagezz.Utilities;
+import com.javaFXGUI.SecondaryGUI.AboutStage;
 import com.javaFXGUI.SecondaryGUI.HistoryStage;
 import com.javaFXGUI.SecondaryGUI.OpenMiceTableStage;
 import com.mouse.Mouse;
@@ -21,7 +22,7 @@ public class AppLaunch extends Application {
 
     static HistoryStage historyStage=new HistoryStage();
     static OpenMiceTableStage openMiceTableStage;
-
+    static AboutStage aboutStage=new AboutStage();
 
     public static void main(String[] args){
         launch(args);
@@ -45,6 +46,10 @@ public class AppLaunch extends Application {
                 }
                 if (openMiceTableStage !=null){
                     openMiceTableStage.close();
+                }
+
+                if (aboutStage !=null ){
+                    aboutStage.close();
                 }
 
                 ArrayList<Mouse> miceArrayList= new ArrayList<>();

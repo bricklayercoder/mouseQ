@@ -1,6 +1,7 @@
 package com.javaFXGUI;
 
 import com.cagezz.Utilities;
+import com.javaFXGUI.SecondaryGUI.AboutStage;
 import com.javaFXGUI.SecondaryGUI.OpenMiceTableStage;
 import com.mouse.Mouse;
 import javafx.event.ActionEvent;
@@ -111,6 +112,13 @@ public class MouseQMenuBar extends MenuBar {
                 }
                 Utilities.createMiceRecordTableFile(miceArrayList);
                 AppLaunch.primaryStage.close();
+            }
+        });
+
+        aboutMouseQMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                AppLaunch.aboutStage.show();
             }
         });
 
