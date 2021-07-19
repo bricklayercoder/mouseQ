@@ -7,15 +7,9 @@ import com.javaFXGUI.SecondaryGUI.OpenMiceTableStage;
 import com.javaFXGUI.SecondaryGUI.SetUpBreedersStage;
 import com.mouse.Mouse;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
+
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
