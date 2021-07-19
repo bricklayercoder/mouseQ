@@ -46,7 +46,7 @@ public final class Utilities {
 
     public static Date translateStringToDate(String s){
         Date date=null;
-        DateFormat dateFormat=new SimpleDateFormat("yyyy/MM/dd hh/mm");
+        DateFormat dateFormat=new SimpleDateFormat("yyyy/MM/dd HH/mm");
         try {
             date=dateFormat.parse(s);
         } catch (ParseException e) {
@@ -58,7 +58,7 @@ public final class Utilities {
 
     public static String parsedDateString(){
         Date currentDate=new Date();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd hh/mm");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH/mm");
         String dateString=dateFormat.format(currentDate);
         String parsedDateString=dateString.replace("/", "-");
         return  parsedDateString;

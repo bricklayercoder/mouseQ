@@ -170,7 +170,9 @@ public class SetUpBreedersStage extends Stage {
             @Override
             public void handle(ActionEvent event) {
                 String cageNumber=breederPickerTabPane.cagesListView.getSelectionModel().getSelectedItem();
-                cageField.setText(cageNumber);
+                if(cageNumber != null){
+                    cageField.setText(cageNumber);
+                }
             }
         });
 
@@ -178,7 +180,9 @@ public class SetUpBreedersStage extends Stage {
             @Override
             public void handle(ActionEvent event) {
                 String selectedMale=breederPickerTabPane.malesListView.getSelectionModel().getSelectedItem();
-                maleBreederField.setText(selectedMale);
+                if (selectedMale !=null){
+                    maleBreederField.setText(selectedMale);
+                }
             }
         });
 
@@ -186,7 +190,7 @@ public class SetUpBreedersStage extends Stage {
             @Override
             public void handle(ActionEvent event) {
                 String selectedFemale=breederPickerTabPane.femalesListView.getSelectionModel().getSelectedItem();
-                if (selectedFemale !=null ){
+                if (selectedFemale !=null && !femaleBreedersListView.femaleBreedersObservableList.contains(selectedFemale)){
                     femaleBreedersListView.femaleBreedersObservableList.add(selectedFemale);
                 }
                 femaleBreedersListView.refresh();
@@ -215,17 +219,13 @@ public class SetUpBreedersStage extends Stage {
                 }
                 ModelBreeders modelBreeders=collectUserInput();
                 for (Mouse mouse : AppLaunch.mainFrameBorderPane.miceVBox.getObservableListOfMouse()){
-                    System.out.println("inside breeding submit");
-                    System.out.println(mouse.getTagNumber());
-                    System.out.println(modelBreeders.getMaleBreederTagNumber());
+
                     if (mouse.getTagNumber().equals(modelBreeders.getMaleBreederTagNumber())){
-                        System.out.println(mouse.getTagNumber());
                         mouse.setStatus(Status.MATING.toString());
                         mouse.setCageNumber(modelBreeders.getCageNumber());
                     }
                     for (String femaleBreeder : modelBreeders.getFemaleBreedersList()){
                         if(mouse.getTagNumber().equals(femaleBreeder)){
-                            System.out.println(mouse.getTagNumber());
                             mouse.setStatus(Status.MATING.toString());
                             mouse.setCageNumber(modelBreeders.getCageNumber());
                         }
@@ -246,6 +246,11 @@ public class SetUpBreedersStage extends Stage {
                 if(!observableListOfCageNumbersForUpdateMouse.contains(modelBreeders.getCageNumber())){
                     observableListOfCageNumbersForUpdateMouse.add(modelBreeders.getCageNumber());
                     AppLaunch.mainFrameBorderPane.miceVBox.addNewMouseAndUpdateMouseHBox.cageAndNotesPickerTabPane.cagesListView.refresh();
+                }
+
+                if (!cageNumberObservableList.contains(modelBreeders.getCageNumber())){
+                    cageNumberObservableList.add(modelBreeders.getCageNumber());
+                    refreshCageListView();
                 }
 
                 AppLaunch.mainFrameBorderPane.getProcessText().setText("Set up breeding cage " + modelBreeders.getCageNumber()+ " successfully.");
@@ -311,7 +316,7 @@ public class SetUpBreedersStage extends Stage {
         root.getStylesheets().add(SetUpBreedersStage.class.getResource("/SetUpBreedersStyleSheet.css").toExternalForm());
         Scene scene=new Scene(root);
         this.setScene(scene);
-        this.setTitle("Set Up Breeder Cage");
+        this.setTitle("Breeding");
         this.setAlwaysOnTop(true);
         this.setResizable(false);
 

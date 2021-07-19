@@ -595,8 +595,8 @@ public class MiceVBox extends VBox {
 
 
             Button clearTagNumber=new Button("Clear"),
-                    clearMother=new Button("Clear"),
-                    clearFather=new Button("Clear"),
+//                    clearMother=new Button("Clear"),
+//                    clearFather=new Button("Clear"),
                     clearGenotype=new Button("Clear"),
                     clearStrain=new Button("Clear"),
                     clearCoatColor=new Button("Clear"),
@@ -740,6 +740,9 @@ public class MiceVBox extends VBox {
                 cageNumberField.setId("cageNumberFieldId");
                 notesField.setId("notesFieldId");
 
+                motherTagField.setEditable(false);
+                fatherTagField.setEditable(false);
+
                 dobPicker.setId("dobPickerId");
                 dobPicker.setEditable(false);
                 weanDatePicker.setId("weanDatePickerId");
@@ -761,11 +764,11 @@ public class MiceVBox extends VBox {
 
                 this.add(motherLabel, 0, 1, 1, 1);
                 this.add(motherTagField, 1, 1, 1, 1);
-                this.add(clearMother, 2, 1, 1,1);
+//                this.add(clearMother, 2, 1, 1,1);
 
                 this.add(fatherLabel, 0, 2, 1, 1);
                 this.add(fatherTagField, 1, 2, 1, 1);
-                this.add(clearFather, 2, 2, 1, 1);
+//                this.add(clearFather, 2, 2, 1, 1);
 
                 this.add(genotypeLabel, 0, 3, 1, 1);
                 this.add(genotypeField, 1, 3, 1, 1);
@@ -819,6 +822,7 @@ public class MiceVBox extends VBox {
                         tagTextField.setText("");
                     }
                 });
+                /**
                 clearMother.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
@@ -831,6 +835,7 @@ public class MiceVBox extends VBox {
                         fatherTagField.setText("");
                     }
                 });
+                 */
                 clearGenotype.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
@@ -1073,6 +1078,8 @@ public class MiceVBox extends VBox {
             cageNumberTextField.setId("cageNumberUpdateTextField");
             statusComboBox.setId("statusUpdateComboBox");
             notesTextField.setId("notesUpdateTextField");
+
+
 
             this.setAlignment(Pos.CENTER);
             this.setHgap(10);

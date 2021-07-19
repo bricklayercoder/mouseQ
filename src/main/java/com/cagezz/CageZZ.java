@@ -130,11 +130,9 @@ public class CageZZ {
 
 
         String recentMiceTableDir=Utilities.getTablesFolderDir()+ File.separator + ReadMiceTables.getRecentMiceTableDir()+".txt";
-        System.out.println("Inside loadMiceRecord: "+ recentMiceTableDir);
         ArrayList<String> mouseList=null;
         try {
             mouseList=ReadMiceTables.readMiceTable(recentMiceTableDir);
-            System.out.println("Inside loadMiceRecord try catch block.");
         } catch (IOException e) {
             e.printStackTrace();
         }

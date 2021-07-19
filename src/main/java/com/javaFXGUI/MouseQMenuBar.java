@@ -32,7 +32,7 @@ public class MouseQMenuBar extends MenuBar {
 
     MenuItem syncItem=new MenuItem("Sync");
     MenuItem historyItem =new MenuItem("History");
-    MenuItem setUpMatingCageItem =new MenuItem("Set Up Mating Cage");
+    MenuItem setUpMatingCageItem =new MenuItem("Breed");
 
 
     public MouseQMenuBar() {
@@ -67,7 +67,6 @@ public class MouseQMenuBar extends MenuBar {
                 if(AppLaunch.openMiceTableStage !=null ){
                     AppLaunch.openMiceTableStage.close();
                 }
-                System.out.println("OpenMiceTableStage is null.");
 
                 try {
                     AppLaunch.openMiceTableStage=new OpenMiceTableStage(chosenTableFile);
@@ -112,7 +111,24 @@ public class MouseQMenuBar extends MenuBar {
                     miceArrayList.add(mouse);
                 }
                 Utilities.createMiceRecordTableFile(miceArrayList);
+
                 AppLaunch.primaryStage.close();
+
+                if(AppLaunch.historyStage !=null){
+                    AppLaunch.historyStage.close();
+                }
+                if (AppLaunch.openMiceTableStage !=null){
+                    AppLaunch.openMiceTableStage.close();
+                }
+
+                if (AppLaunch.aboutStage !=null ){
+                    AppLaunch.aboutStage.close();
+                }
+
+                if(AppLaunch.setUpBreedersStage !=null ){
+                    AppLaunch.setUpBreedersStage.close();
+                }
+
             }
         });
 
