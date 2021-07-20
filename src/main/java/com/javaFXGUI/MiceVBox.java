@@ -49,7 +49,7 @@ public class MiceVBox extends VBox {
     MiceTableView miceTableView=new MiceTableView();
 
     HBox miceTableViewAndSelectedMouseHBox =new MiceTableViewAndSelectedMouseHBox();
-    AddNewMouseAndUpdateMouseHBox addNewMouseAndUpdateMouseHBox =new AddNewMouseAndUpdateMouseHBox();
+    public AddNewMouseAndUpdateMouseHBox addNewMouseAndUpdateMouseHBox =new AddNewMouseAndUpdateMouseHBox();
 
 
     public ObservableList<Mouse> getObservableListOfMouse(){
@@ -232,16 +232,16 @@ public class MiceVBox extends VBox {
             this.getColumns().add(notesColumn);
 
 
-            tagNumberColomn.setPrefWidth(90);
-            motherNumberColomn.setPrefWidth(90);
-            fatherNumberColomn.setPrefWidth(90);
-            genotypeColomn.setPrefWidth(90);
+            tagNumberColomn.setPrefWidth(120);
+            motherNumberColomn.setPrefWidth(120);
+            fatherNumberColomn.setPrefWidth(120);
+            genotypeColomn.setPrefWidth(120);
             birthDateColumn.setPrefWidth(90);
             genderColumn.setPrefWidth(90);
             strainColumn.setPrefWidth(90);
             coatColorColumn.setPrefWidth(90);
             weanDateColumn.setPrefWidth(90);
-            cageNumberColumn.setPrefWidth(90);
+            cageNumberColumn.setPrefWidth(120);
             statusColumn.setPrefWidth(90);
             notesColumn.setPrefWidth(325);
 
@@ -269,13 +269,13 @@ public class MiceVBox extends VBox {
 
     }
 
-    class AddNewMouseAndUpdateMouseHBox extends HBox {
+    public class AddNewMouseAndUpdateMouseHBox extends HBox {
 
-        ChooseVariousDataTabPane chooseVariousDataTabPane =new ChooseVariousDataTabPane();
+        public ChooseVariousDataTabPane chooseVariousDataTabPane =new ChooseVariousDataTabPane();
         AddingNewMouseGridPane addingNewMouseGridPane=new AddingNewMouseGridPane();
         ChooserAndAddMouseHBox chooserAndAddMouseHBox=new ChooserAndAddMouseHBox();
 
-        CageAndNotesPickerTabPane cageAndNotesPickerTabPane=new CageAndNotesPickerTabPane();
+        public CageAndNotesPickerTabPane cageAndNotesPickerTabPane=new CageAndNotesPickerTabPane();
         PickersAndUpdateHBox pickersAndUpdateHBox=new PickersAndUpdateHBox();
 
         /**
@@ -290,7 +290,7 @@ public class MiceVBox extends VBox {
         }
 
 
-        class CageAndNotesPickerTabPane extends TabPane{
+        public class CageAndNotesPickerTabPane extends TabPane{
             Tab cagePickerTab=new Tab("Cages");
             Tab notesPickerTab=new Tab("Notes");
 
@@ -310,8 +310,8 @@ public class MiceVBox extends VBox {
         /**
          *  CagePickerListView specific for update mouse
          */
-        class CagePickerListView extends ListView<String>{
-            ObservableList<String> cageNumberObservableList=FXCollections.observableArrayList();
+        public class CagePickerListView extends ListView<String>{
+            public ObservableList<String> cageNumberObservableList=FXCollections.observableArrayList();
 
             public CagePickerListView() {
                 cageNumberObservableList.add("Anonym");
@@ -412,13 +412,13 @@ public class MiceVBox extends VBox {
         }
 
         public class CagesListView extends ListView<String>{
-            ObservableList<String> cageTagNumberObservableList=FXCollections.observableArrayList();
+            public ObservableList<String> cageNumberObservableList =FXCollections.observableArrayList();
 
             public CagesListView() {
-                cageTagNumberObservableList.add("Anonym");
+                cageNumberObservableList.add("Anonym");
                 for(Mouse mouse : getObservableListOfMouse()){
-                    if(!cageTagNumberObservableList.contains(mouse.getCageNumber()))
-                        cageTagNumberObservableList.add(mouse.getCageNumber());
+                    if(!cageNumberObservableList.contains(mouse.getCageNumber()))
+                        cageNumberObservableList.add(mouse.getCageNumber());
                 }
                 this.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
                     @Override
@@ -426,7 +426,7 @@ public class MiceVBox extends VBox {
                         addingNewMouseGridPane.setCageNumberField(newValue);
                     }
                 });
-                this.setItems(cageTagNumberObservableList);
+                this.setItems(cageNumberObservableList);
             }
         }
 
@@ -444,7 +444,7 @@ public class MiceVBox extends VBox {
             GenotypeListView genotypeListView=new GenotypeListView();
             StrainListView strainListView=new StrainListView();
             CoatColorListView coatColorListView=new CoatColorListView();
-            CagesListView cagesListView=new CagesListView();
+            public CagesListView cagesListView=new CagesListView();
             NotesListView notesListView=new NotesListView();
 
             void refreshListViews(){
@@ -595,8 +595,8 @@ public class MiceVBox extends VBox {
 
 
             Button clearTagNumber=new Button("Clear"),
-                    clearMother=new Button("Clear"),
-                    clearFather=new Button("Clear"),
+//                    clearMother=new Button("Clear"),
+//                    clearFather=new Button("Clear"),
                     clearGenotype=new Button("Clear"),
                     clearStrain=new Button("Clear"),
                     clearCoatColor=new Button("Clear"),
@@ -740,6 +740,9 @@ public class MiceVBox extends VBox {
                 cageNumberField.setId("cageNumberFieldId");
                 notesField.setId("notesFieldId");
 
+                motherTagField.setEditable(false);
+                fatherTagField.setEditable(false);
+
                 dobPicker.setId("dobPickerId");
                 dobPicker.setEditable(false);
                 weanDatePicker.setId("weanDatePickerId");
@@ -761,11 +764,11 @@ public class MiceVBox extends VBox {
 
                 this.add(motherLabel, 0, 1, 1, 1);
                 this.add(motherTagField, 1, 1, 1, 1);
-                this.add(clearMother, 2, 1, 1,1);
+//                this.add(clearMother, 2, 1, 1,1);
 
                 this.add(fatherLabel, 0, 2, 1, 1);
                 this.add(fatherTagField, 1, 2, 1, 1);
-                this.add(clearFather, 2, 2, 1, 1);
+//                this.add(clearFather, 2, 2, 1, 1);
 
                 this.add(genotypeLabel, 0, 3, 1, 1);
                 this.add(genotypeField, 1, 3, 1, 1);
@@ -819,6 +822,7 @@ public class MiceVBox extends VBox {
                         tagTextField.setText("");
                     }
                 });
+                /**
                 clearMother.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
@@ -831,6 +835,7 @@ public class MiceVBox extends VBox {
                         fatherTagField.setText("");
                     }
                 });
+                 */
                 clearGenotype.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
@@ -925,6 +930,24 @@ public class MiceVBox extends VBox {
 
                         }
                         refreshMiceTable();
+                        if (newMouse.getGender().toLowerCase().equals("male")){
+                            if(!AppLaunch.setUpBreedersStage.malesTagNumberObservableList.contains(newMouse.getTagNumber())){
+                                AppLaunch.setUpBreedersStage.malesTagNumberObservableList.add(newMouse.getTagNumber());
+                                AppLaunch.setUpBreedersStage.refreshMalesListView();
+                            }
+                        }
+
+                        if(newMouse.getGender().toLowerCase().equals("female")){
+                            if(!AppLaunch.setUpBreedersStage.femalesTagNumberObservableList.contains(newMouse.getTagNumber())){
+                                AppLaunch.setUpBreedersStage.femalesTagNumberObservableList.add(newMouse.getTagNumber());
+                                AppLaunch.setUpBreedersStage.refreshFemalesListView();
+                            }
+                        }
+
+                        if(!AppLaunch.setUpBreedersStage.cageNumberObservableList.contains(newMouse.getCageNumber())){
+                            AppLaunch.setUpBreedersStage.cageNumberObservableList.add(newMouse.getCageNumber());
+                            AppLaunch.setUpBreedersStage.refreshCageListView();
+                        }
 
                         if (newMouse.getGender().toLowerCase().equals("male")) {
                             chooseVariousDataTabPane.malesListView.malesTagNumberObservableList.add(newMouse.getTagNumber());
@@ -944,8 +967,8 @@ public class MiceVBox extends VBox {
                             chooseVariousDataTabPane.coatColorListView.coatColorObservableList.add(newMouse.getCoatColour());
                         }
 
-                        if (!chooseVariousDataTabPane.cagesListView.cageTagNumberObservableList.contains(newMouse.getCageNumber())){
-                            chooseVariousDataTabPane.cagesListView.cageTagNumberObservableList.add(newMouse.getCageNumber());
+                        if (!chooseVariousDataTabPane.cagesListView.cageNumberObservableList.contains(newMouse.getCageNumber())){
+                            chooseVariousDataTabPane.cagesListView.cageNumberObservableList.add(newMouse.getCageNumber());
                         }
 
                         if (!chooseVariousDataTabPane.notesListView.notesObservableList.contains(newMouse.getNotes())){
@@ -962,6 +985,8 @@ public class MiceVBox extends VBox {
                             cageAndNotesPickerTabPane.notesListView.notesObservableList.add(newMouse.getNotes());
                             cageAndNotesPickerTabPane.notesListView.refresh();
                         }
+
+                        AppLaunch.dataSanityStage.reloadSanitiesTableView();
 
                     }
                 });
@@ -993,6 +1018,7 @@ public class MiceVBox extends VBox {
         Button  clearCageNumberButton=new Button("Clear"),
                 clearNotesButton=new Button("Clear"),
                 updateButton=new Button("Update Mouse");
+
 
         public void setTagNumberTextField(String s){
             tagNumberTextField.setText(s);
@@ -1055,6 +1081,8 @@ public class MiceVBox extends VBox {
             statusComboBox.setId("statusUpdateComboBox");
             notesTextField.setId("notesUpdateTextField");
 
+
+
             this.setAlignment(Pos.CENTER);
             this.setHgap(10);
             this.setVgap(20);
@@ -1067,6 +1095,7 @@ public class MiceVBox extends VBox {
             notesTextField.setPrefWidth(200);
 
             updateButton.setPrefWidth(200);
+
 
 
             this.add(selectedUpdateIconText, 0, 0, 2, 1);
@@ -1137,6 +1166,12 @@ public class MiceVBox extends VBox {
                     }
 
                     refreshMiceTable();
+
+                    if (!AppLaunch.setUpBreedersStage.cageNumberObservableList.contains(updateModelMouse.getCageNumber())){
+                        AppLaunch.setUpBreedersStage.cageNumberObservableList.add(updateModelMouse.getCageNumber());
+                        AppLaunch.setUpBreedersStage.refreshCageListView();
+                    }
+
                     AppLaunch.mainFrameBorderPane.getProcessText().setText("Update mouse: "+selectedMouse.getTagNumber()+" successfully.");
                     AppLaunch.mainFrameBorderPane.getProcessText().setStyle("-fx-fill: white; -fx-font-size: 13pt;");
 
@@ -1162,9 +1197,9 @@ public class MiceVBox extends VBox {
                      *  add updated cage and notes information to AddNewMouse's chooseVariousDataTabPane's cagesListview and notesListView
                      */
                     if(!addNewMouseAndUpdateMouseHBox.chooseVariousDataTabPane.
-                            cagesListView.cageTagNumberObservableList.contains(updateModelMouse.getCageNumber())){
+                            cagesListView.cageNumberObservableList.contains(updateModelMouse.getCageNumber())){
                         addNewMouseAndUpdateMouseHBox.chooseVariousDataTabPane.
-                                cagesListView.cageTagNumberObservableList.add(updateModelMouse.getCageNumber());
+                                cagesListView.cageNumberObservableList.add(updateModelMouse.getCageNumber());
                         addNewMouseAndUpdateMouseHBox.chooseVariousDataTabPane.
                                 cagesListView.refresh();
                     }
@@ -1193,6 +1228,8 @@ public class MiceVBox extends VBox {
                         addNewMouseAndUpdateMouseHBox.cageAndNotesPickerTabPane.notesListView.notesObservableList.add(updateModelMouse.getNotes());
                         addNewMouseAndUpdateMouseHBox.cageAndNotesPickerTabPane.notesListView.refresh();
                     }
+
+                    AppLaunch.dataSanityStage.reloadSanitiesTableView();
 
                 }
             });

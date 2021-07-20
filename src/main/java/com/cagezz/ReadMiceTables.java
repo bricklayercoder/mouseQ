@@ -46,7 +46,7 @@ public final class ReadMiceTables {
                 recentDate=dates[q];
             }
         }
-        DateFormat df=new SimpleDateFormat("yyyy/MM/dd hh/mm");
+        DateFormat df=new SimpleDateFormat("yyyy/MM/dd HH/mm");
 
         return df.format(recentDate).replace("/", "-");
     }

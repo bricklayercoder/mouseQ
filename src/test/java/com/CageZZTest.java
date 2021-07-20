@@ -31,7 +31,6 @@ class CageZZTest {
         assertEquals(miceRecords.get(tag1).getGender(), "MALE");
         assertEquals(miceRecords.get(tag1).getNotes(), notes);
         assertEquals(miceRecords.get(tag2).getStatus(), status);
-//        assertEquals(miceRecords.size(), 3);
     }
 
     @Test
@@ -90,18 +89,19 @@ class CageZZTest {
         assertTrue(physicalWriteSucess);
     }
 
+
     @Test
-    void checkRecordSanity() {
+    void getCageDataSanities() {
         cagezz.loadMiceRecords();
-        cagezz.getCageZZ();
-        HashMap<String, DataSanity> dataSanityHashMap=cagezz.getDataSanityHashMap();
-        System.out.println(dataSanityHashMap);
-        for(Map.Entry<String, DataSanity> entry : dataSanityHashMap.entrySet()){
-            if(entry.getKey().equals("Not entered")){
-                assertEquals(entry.getValue(), DataSanity.OVER_SIZED);
+        HashMap<String, DataSanity[]> dataSanitiesHashMap=cagezz.getCageDataSanities(cagezz.getCageZZ(cagezz.getMiceList()));
+        for (Map.Entry<String, DataSanity[]> mapEntry: dataSanitiesHashMap.entrySet()){
+            DataSanity[] dataSanities=mapEntry.getValue();
+            System.out.println(dataSanities[0].toString());
+            System.out.println(dataSanities[1].toString());
+
+            if (mapEntry.getKey().toLowerCase().equals("new123")){
+                assertEquals(DataSanity.INCOMPATIBLE_BREED_STATUS, dataSanities[1]);
             }
         }
     }
-
-
 }

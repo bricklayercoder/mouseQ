@@ -1,13 +1,12 @@
 package com.javaFXGUI;
 
 import com.cagezz.Utilities;
-import com.javaFXGUI.SecondaryGUI.AboutStage;
-import com.javaFXGUI.SecondaryGUI.HistoryStage;
-import com.javaFXGUI.SecondaryGUI.OpenMiceTableStage;
+import com.javaFXGUI.SecondaryGUI.*;
 import com.mouse.Mouse;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -20,9 +19,11 @@ public class AppLaunch extends Application {
 
     public static MainFrameBorderPane mainFrameBorderPane =new MainFrameBorderPane();
 
-    static HistoryStage historyStage=new HistoryStage();
+    public static HistoryStage historyStage=new HistoryStage();
     static OpenMiceTableStage openMiceTableStage;
     static AboutStage aboutStage=new AboutStage();
+    static SetUpBreedersStage setUpBreedersStage=new SetUpBreedersStage();
+    public static DataSanityStage dataSanityStage=new DataSanityStage();
 
     public static void main(String[] args){
         launch(args);
@@ -52,6 +53,14 @@ public class AppLaunch extends Application {
                     aboutStage.close();
                 }
 
+                if(setUpBreedersStage !=null ){
+                    setUpBreedersStage.close();
+                }
+
+                if (dataSanityStage !=null ){
+                    dataSanityStage.close();
+                }
+
                 ArrayList<Mouse> miceArrayList= new ArrayList<>();
                 for (Mouse mouse :mainFrameBorderPane.miceVBox.miceRecordObservableList)
                         miceArrayList.add(mouse);
@@ -62,4 +71,6 @@ public class AppLaunch extends Application {
 
         primaryStage.show();
     }
+
+
 }

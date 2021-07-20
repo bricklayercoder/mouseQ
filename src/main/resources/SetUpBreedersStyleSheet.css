@@ -1,0 +1,109 @@
+.root {
+    -fx-background-color: #505150;
+}
+
+
+.tab, .tab-label {
+    -fx-font-weight: bold;
+    -fx-font-size: 13pt;
+    -fx-text-fill: white;
+}
+
+.tab-content-area {
+    -fx-background-color: #505150;
+    -fx-padding: 0.0em;
+
+}
+
+.tab-pane, *.tab-header-background
+{
+    -fx-background-color: #505150;
+    -fx-effect: innershadow(two-pass-box , rgba(0,0,0,0.6) , 4, 0.0 , 0 , 0);
+}
+
+.tab:top {
+    -fx-background-color: #505150;
+}
+
+.tab:selected {
+    -fx-background-color: royalblue;
+}
+
+.tab:bottom {
+    -fx-background-color: #505150;
+}
+
+.list-view: {
+    -fx-background-color: #505150;
+}
+
+.list-cell {
+    -fx-background-color: #505150;
+    -fx-font-family: Arial;
+    -fx-font-size: 13pt;
+    -fx-text-fill: white;
+}
+
+.list-cell:selected {
+    -fx-background-color: royalblue;
+}
+
+.button {
+       -fx-background-color: #326267;
+       -fx-text-fill: white;
+       -fx-font-weight: bold;
+       -fx-font-size: 13pt;
+       -fx-border-radius: 15;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+#cageIndicatorText {
+        -fx-background-color: royalblue;
+        -fx-fill: white;
+        -fx-font-size: 13pt;
+}
+
+#cageField {
+-fx-background-color: royalblue;
+    -fx-text-fill: white;
+    -fx-font-size: 13pt;
+}
+
+#maleIndicatorText {
+    -fx-background-color: royalblue;
+    -fx-fill: white;
+    -fx-font-size: 13pt;
+}
+
+#maleBreederField {
+    -fx-background-color: royalblue;
+    -fx-text-fill: white;
+    -fx-font-size: 13pt;
+}
+
+#femaleIndicatorText {
+    -fx-background-color: royalblue;
+    -fx-fill: white;
+    -fx-font-size: 13pt;
+}
+
+.list-view > .viewport {
+    -fx-background-color: #505150;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

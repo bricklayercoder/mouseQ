@@ -10,7 +10,7 @@ import javafx.scene.text.Text;
 public class MainFrameBorderPane extends BorderPane {
 
     MenuBar menuBar=new MouseQMenuBar();
-    MiceVBox miceVBox=new MiceVBox();
+    public MiceVBox miceVBox=new MiceVBox();
     Text processText=new Text("Process will be shown here");
 
     public MouseQMenuBar getMouseQMenuBar(){

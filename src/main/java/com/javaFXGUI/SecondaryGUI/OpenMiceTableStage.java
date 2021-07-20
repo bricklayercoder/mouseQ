@@ -1,7 +1,10 @@
 package com.javaFXGUI.SecondaryGUI;
 
 import com.cagezz.ReadMiceTables;
+import com.javaFXGUI.AppLaunch;
 import com.mouse.Mouse;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -19,6 +22,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.File;
 import java.io.IOException;
@@ -51,45 +55,51 @@ public class OpenMiceTableStage extends Stage {
                         searchTextField.setOnKeyReleased(new EventHandler<KeyEvent>() {
                                 @Override
                                 public void handle(KeyEvent e) {
-                                        searchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+                                        searchTextField.textProperty().addListener(new ChangeListener<String>() {
+                                                @Override
+                                                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
-                                                filteredListOfMice.setPredicate( (Predicate<? super Mouse>) mouse -> {
-                                                        if (newValue == null || newValue.isEmpty()) {
-                                                                return true;
-                                                        }
+                                                        filteredListOfMice.setPredicate(new Predicate<Mouse>() {
+                                                                @Override
+                                                                public boolean test(Mouse mouse) {
+                                                                        if (newValue == null || newValue.isEmpty()) {
+                                                                                return true;
+                                                                        }
 
-                                                        // Compare each mouse attribute
-                                                        String lowerCaseFilter = newValue.toLowerCase().trim();
+                                                                        // Compare each mouse attribute
+                                                                        String lowerCaseFilter = newValue.toLowerCase().trim();
 
-                                                        if (mouse.getTagNumber().toLowerCase().contains(lowerCaseFilter)) {
-                                                                return true;
-                                                        } else if (mouse.getMaternalTagNumber().toLowerCase().contains(lowerCaseFilter)) {
-                                                                return true;
-                                                        } else if (mouse.getPaternalTagNumber().toLowerCase().contains(lowerCaseFilter)) {
-                                                                return true;
-                                                        } else if (mouse.getGenotype().toLowerCase().contains(lowerCaseFilter)) {
-                                                                return true;
-                                                        } else if (mouse.getBirthDate().toLowerCase().contains(lowerCaseFilter)) {
-                                                                return true;
-                                                        } else if (mouse.getGender().toLowerCase().contains(lowerCaseFilter)) {
-                                                                return true;
-                                                        } else if (mouse.getStrain().toLowerCase().contains(lowerCaseFilter)) {
-                                                                return true;
-                                                        } else if (mouse.getCoatColour().toLowerCase().contains(lowerCaseFilter)) {
-                                                                return true;
-                                                        } else if (mouse.getWeanDate().toLowerCase().contains(lowerCaseFilter)) {
-                                                                return true;
-                                                        } else if (mouse.getCageNumber().toLowerCase().contains(lowerCaseFilter)) {
-                                                                return true;
-                                                        } else if (mouse.getStatus().toLowerCase().contains(lowerCaseFilter)) {
-                                                                return true;
-                                                        } else if (mouse.getNotes().toLowerCase().contains(lowerCaseFilter)) {
-                                                                return true;
-                                                        } else {
-                                                                return false;
+                                                                        if (mouse.getTagNumber().toLowerCase().contains(lowerCaseFilter)) {
+                                                                                return true;
+                                                                        } else if (mouse.getMaternalTagNumber().toLowerCase().contains(lowerCaseFilter)) {
+                                                                                return true;
+                                                                        } else if (mouse.getPaternalTagNumber().toLowerCase().contains(lowerCaseFilter)) {
+                                                                                return true;
+                                                                        } else if (mouse.getGenotype().toLowerCase().contains(lowerCaseFilter)) {
+                                                                                return true;
+                                                                        } else if (mouse.getBirthDate().toLowerCase().contains(lowerCaseFilter)) {
+                                                                                return true;
+                                                                        } else if (mouse.getGender().toLowerCase().contains(lowerCaseFilter)) {
+                                                                                return true;
+                                                                        } else if (mouse.getStrain().toLowerCase().contains(lowerCaseFilter)) {
+                                                                                return true;
+                                                                        } else if (mouse.getCoatColour().toLowerCase().contains(lowerCaseFilter)) {
+                                                                                return true;
+                                                                        } else if (mouse.getWeanDate().toLowerCase().contains(lowerCaseFilter)) {
+                                                                                return true;
+                                                                        } else if (mouse.getCageNumber().toLowerCase().contains(lowerCaseFilter)) {
+                                                                                return true;
+                                                                        } else if (mouse.getStatus().toLowerCase().contains(lowerCaseFilter)) {
+                                                                                return true;
+                                                                        } else if (mouse.getNotes().toLowerCase().contains(lowerCaseFilter)) {
+                                                                                return true;
+                                                                        } else {
+                                                                                return false;
 
-                                                        }
-                                                });
+                                                                        }
+                                                                }
+                                                        });
+                                                }
                                         });
 
                                 }
@@ -150,16 +160,16 @@ public class OpenMiceTableStage extends Stage {
                         this.getColumns().add(notesColumn);
 
 
-                        tagNumberColomn.setPrefWidth(90);
-                        motherNumberColomn.setPrefWidth(90);
-                        fatherNumberColomn.setPrefWidth(90);
-                        genotypeColomn.setPrefWidth(90);
+                        tagNumberColomn.setPrefWidth(120);
+                        motherNumberColomn.setPrefWidth(120);
+                        fatherNumberColomn.setPrefWidth(120);
+                        genotypeColomn.setPrefWidth(120);
                         birthDateColumn.setPrefWidth(90);
                         genderColumn.setPrefWidth(90);
                         strainColumn.setPrefWidth(90);
                         coatColorColumn.setPrefWidth(90);
                         weanDateColumn.setPrefWidth(90);
-                        cageNumberColumn.setPrefWidth(90);
+                        cageNumberColumn.setPrefWidth(120);
                         statusColumn.setPrefWidth(90);
                         notesColumn.setPrefWidth(325);
 
@@ -193,6 +203,14 @@ public class OpenMiceTableStage extends Stage {
                 Scene scene= new Scene(containerBorderPane);
                 this.setScene(scene);
                 this.setTitle(miceTableFile.getName());
+
+                this.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                        @Override
+                        public void handle(WindowEvent event) {
+                                AppLaunch.mainFrameBorderPane.getProcessText().setText(miceTableFile.getName()+" closed!");
+                                AppLaunch.mainFrameBorderPane.getProcessText().setStyle("-fx-fill: white; -fx-font-size: 13pt;");
+                        }
+                });
 
                 this.setAlwaysOnTop(true);
         }
