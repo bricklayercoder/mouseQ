@@ -33,6 +33,7 @@ public class MouseQMenuBar extends MenuBar {
     MenuItem syncItem=new MenuItem("Sync");
     MenuItem historyItem =new MenuItem("History");
     MenuItem setUpMatingCageItem =new MenuItem("Breed");
+    MenuItem sanityMenuItem=new MenuItem("Sanity");
 
 
     public MouseQMenuBar() {
@@ -48,6 +49,7 @@ public class MouseQMenuBar extends MenuBar {
         recordMenu.getItems().add(setUpMatingCageItem);
         recordMenu.getItems().add(syncItem);
         recordMenu.getItems().add(historyItem);
+        recordMenu.getItems().add(sanityMenuItem);
 
         this.getMenus().addAll(mouseQMenu, fileMenu, recordMenu);
 
@@ -129,6 +131,10 @@ public class MouseQMenuBar extends MenuBar {
                     AppLaunch.setUpBreedersStage.close();
                 }
 
+                if (AppLaunch.dataSanityStage !=null ){
+                    AppLaunch.dataSanityStage.close();
+                }
+
             }
         });
 
@@ -143,6 +149,13 @@ public class MouseQMenuBar extends MenuBar {
             @Override
             public void handle(ActionEvent event) {
                 AppLaunch.setUpBreedersStage.show();
+            }
+        });
+
+        sanityMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                AppLaunch.dataSanityStage.show();
             }
         });
 

@@ -232,16 +232,16 @@ public class MiceVBox extends VBox {
             this.getColumns().add(notesColumn);
 
 
-            tagNumberColomn.setPrefWidth(90);
-            motherNumberColomn.setPrefWidth(90);
-            fatherNumberColomn.setPrefWidth(90);
-            genotypeColomn.setPrefWidth(90);
+            tagNumberColomn.setPrefWidth(120);
+            motherNumberColomn.setPrefWidth(120);
+            fatherNumberColomn.setPrefWidth(120);
+            genotypeColomn.setPrefWidth(120);
             birthDateColumn.setPrefWidth(90);
             genderColumn.setPrefWidth(90);
             strainColumn.setPrefWidth(90);
             coatColorColumn.setPrefWidth(90);
             weanDateColumn.setPrefWidth(90);
-            cageNumberColumn.setPrefWidth(90);
+            cageNumberColumn.setPrefWidth(120);
             statusColumn.setPrefWidth(90);
             notesColumn.setPrefWidth(325);
 
@@ -986,6 +986,8 @@ public class MiceVBox extends VBox {
                             cageAndNotesPickerTabPane.notesListView.refresh();
                         }
 
+                        AppLaunch.dataSanityStage.reloadSanitiesTableView();
+
                     }
                 });
 
@@ -1226,6 +1228,8 @@ public class MiceVBox extends VBox {
                         addNewMouseAndUpdateMouseHBox.cageAndNotesPickerTabPane.notesListView.notesObservableList.add(updateModelMouse.getNotes());
                         addNewMouseAndUpdateMouseHBox.cageAndNotesPickerTabPane.notesListView.refresh();
                     }
+
+                    AppLaunch.dataSanityStage.reloadSanitiesTableView();
 
                 }
             });

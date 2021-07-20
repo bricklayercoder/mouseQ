@@ -60,7 +60,7 @@ class UtilitiesTest {
     void translateStringToDate() {
         Date date=Utilities.translateStringToDate("2021/05/19 03/08");
         System.out.println(date);
-        DateFormat dateFormat=new SimpleDateFormat("yyyy/MM/dd hh/mm");
+        DateFormat dateFormat=new SimpleDateFormat("yyyy/MM/dd HH/mm");
         String dateString=dateFormat.format(date);
         assertTrue(dateString.equals("2021/05/19 03/08"));
     }

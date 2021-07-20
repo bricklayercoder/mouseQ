@@ -1,10 +1,7 @@
 package com.javaFXGUI;
 
 import com.cagezz.Utilities;
-import com.javaFXGUI.SecondaryGUI.AboutStage;
-import com.javaFXGUI.SecondaryGUI.HistoryStage;
-import com.javaFXGUI.SecondaryGUI.OpenMiceTableStage;
-import com.javaFXGUI.SecondaryGUI.SetUpBreedersStage;
+import com.javaFXGUI.SecondaryGUI.*;
 import com.mouse.Mouse;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -26,6 +23,7 @@ public class AppLaunch extends Application {
     static OpenMiceTableStage openMiceTableStage;
     static AboutStage aboutStage=new AboutStage();
     static SetUpBreedersStage setUpBreedersStage=new SetUpBreedersStage();
+    public static DataSanityStage dataSanityStage=new DataSanityStage();
 
     public static void main(String[] args){
         launch(args);
@@ -57,6 +55,10 @@ public class AppLaunch extends Application {
 
                 if(setUpBreedersStage !=null ){
                     setUpBreedersStage.close();
+                }
+
+                if (dataSanityStage !=null ){
+                    dataSanityStage.close();
                 }
 
                 ArrayList<Mouse> miceArrayList= new ArrayList<>();

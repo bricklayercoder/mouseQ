@@ -264,6 +264,8 @@ public class SetUpBreedersStage extends Stage {
                 s+="\n";
                 AppLaunch.historyStage.sb.append(s);
                 AppLaunch.historyStage.setHistoryText(AppLaunch.historyStage.sb.toString());
+
+                AppLaunch.dataSanityStage.reloadSanitiesTableView();
             }
         });
 

@@ -19,8 +19,11 @@ public class AboutStage extends Stage {
                 "To update existing mouse records, select the mouse records from the table, and\n" +
                 "Enter the information to be updated, then press 'Update Mouse' button, the entered\n" +
                 "Update information will be reflected in the mice table.\n\n" +
+                "To set up breeding cage, go to 'Record -> Breed'.\n\n" +
+                "To check whether the cages statuses are compatible with statuses of the mice contained,\n" +
+                "Go to 'Record -> Sanity'.\n\n" +
                 "Information to be added or Updated can be picked from existing choices located in " +
-                "Each panel's left side.\n\n" +
+                "each panel's left side.\n\n" +
                 "For each updating or adding operation, processing information will be shown in the\n" +
                 "Bottom. By pressing 'Record -> History', adding and updating history are shown in order.\n\n" +
                 "To write the current table's records into file, press 'Record -> Sync'.\n\n" +
@@ -41,7 +44,7 @@ public class AboutStage extends Stage {
         this.setResizable(false);
         pane.setContent(introText);
         pane.setPrefWidth(785);
-        pane.setPrefHeight(725);
+        pane.setPrefHeight(815);
         introText.setStyle("-fx-font-size: 13pt; -fx-fill: white;");
         pane.getStylesheets().add(HistoryStage.class.getResource("/historyStyleSheet.css").toExternalForm());
         this.setScene(scene);

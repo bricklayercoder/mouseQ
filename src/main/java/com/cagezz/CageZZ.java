@@ -5,10 +5,7 @@ import com.mouse.Mouse;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class CageZZ {
 
@@ -84,6 +81,52 @@ public class CageZZ {
         return cagezzHoused;
     }
 
+    public HashMap<String, Cage> getCageZZ(ArrayList<Mouse> miceArrayList){
+        HashMap<String, Cage> cagesHashMap=new HashMap<>();
+        for (Mouse mouse : miceArrayList){
+            if(! cagesHashMap.containsKey(mouse.getCageNumber())){
+                Cage cage=new Cage();
+                cage.setCageNumber(mouse.getCageNumber());
+                cage.setStatus(mouse.getStatus());
+                cage.getMiceInfoContainer().add(mouse);
+                cage.setStrain(mouse.getStrain());
+                cage.setNotes(mouse.getNotes());
+                cagesHashMap.put(mouse.getCageNumber(), cage);
+            } else {
+
+                Cage cage=cagesHashMap.get(mouse.getCageNumber());
+                cage.getMiceInfoContainer().add(mouse);
+                cage.setStatus((mouse.getStatus()));
+                cage.setStrain(mouse.getStrain());
+                cage.setNotes(mouse.getNotes());
+            }
+        }
+        return cagesHashMap;
+
+    }
+
+    public HashMap<String, DataSanity[]> getCageDataSanities(HashMap<String, Cage> cagezMap){
+        HashMap<String, DataSanity[]> dataSanitiesHashMap=new HashMap<>();
+        for (Map.Entry<String, Cage> mapEntry : cagezMap.entrySet()){
+            DataSanity[] dataSanities=new DataSanity[2];
+            if (mapEntry.getValue().getMiceInfoContainer().size() > 5){
+                DataSanity overSizedDataSanity=DataSanity.OVER_SIZED;
+                dataSanities[0]=overSizedDataSanity;
+            }
+            for (Mouse mouse : mapEntry.getValue().getMiceInfoContainer()){
+                if (!mapEntry.getValue().getStatus().equals(mouse.getStatus())){
+                    DataSanity incompatibleBreedsStatus=DataSanity.INCOMPATIBLE_BREED_STATUS;
+                    dataSanities[1]=incompatibleBreedsStatus;
+                    break;
+                }
+            }
+            dataSanitiesHashMap.put(mapEntry.getKey(), dataSanities);
+
+        }
+        return dataSanitiesHashMap;
+
+    }
+
 
     private void loadCageRecords(){
 
@@ -120,6 +163,8 @@ public class CageZZ {
     public HashMap<String, Mouse> getMiceRecords(){
         return miceRecords;
     }
+
+
     public void loadMiceRecords(){
         File mouseQDirFile=new File(Utilities.getTablesFolderDir());
         String[] fileDirs=mouseQDirFile.list();
@@ -194,54 +239,8 @@ public class CageZZ {
         return added;
     }
 
-    /*use the cagesHoused HashMap to
-    check dataSanity to see if mice records are properly kept.
-     */
-    private boolean isCageSanityDataAlreadyInHashMap(String cageNumber, DataSanity dataSanity){
-        boolean isAlreadyInHashmap=false;
-        DataSanity dataSanityInTheHashMap=dataSanityHashMap.get(cageNumber);
-
-        if ( dataSanity.toString().equals(dataSanityInTheHashMap.toString())){
-            isAlreadyInHashmap=true;
-        }
-
-        return isAlreadyInHashmap;
-
-    }
 
 
-    public HashMap<String, DataSanity> getDataSanityHashMap(){
-        Cage thisCage;
-        ArrayList<Mouse> miceInThisCage;
-        DataSanity thisCagesDataSanity;
-        System.out.println(cagezzHoused);
-
-        for(Map.Entry<String, Cage> entry : cagezzHoused.entrySet()){
-            thisCage=entry.getValue();
-            miceInThisCage=thisCage.getMiceInfoContainer();
-
-
-            if(miceInThisCage.size() > 5) {
-                thisCagesDataSanity=DataSanity.OVER_SIZED;
-                if(! isCageSanityDataAlreadyInHashMap(thisCage.getCageNumber(), thisCagesDataSanity)){
-                dataSanityHashMap.put(thisCage.getCageNumber(), DataSanity.OVER_SIZED);
-                }
-            }
-
-            for(Mouse mouse : miceInThisCage) {
-
-                if(!Objects.equals(thisCage.getStatus(), mouse.getStatus())){
-                    thisCagesDataSanity=DataSanity.INCOMPATIBLE_BREED_STATUS;
-                    if (!isCageSanityDataAlreadyInHashMap(thisCage.getCageNumber(), thisCagesDataSanity)){
-                    dataSanityHashMap.put(entry.getKey(), DataSanity.INCOMPATIBLE_BREED_STATUS);
-                    }
-                    break;
-                }
-            }
-        }
-
-        return dataSanityHashMap;
-    }
 
 
 
