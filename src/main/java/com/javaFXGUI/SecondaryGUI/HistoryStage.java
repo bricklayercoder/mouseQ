@@ -23,7 +23,7 @@ public class HistoryStage extends Stage {
         this.setTitle("Data operation history");
         this.setResizable(false);
         historScrollPane.setContent(historyText);
-        historScrollPane.setPrefWidth(550);
+        historScrollPane.setPrefWidth(490);
         historScrollPane.setPrefHeight(650);
         historyText.setStyle("-fx-font-size: 13pt; -fx-fill: white;");
         historScrollPane.getStylesheets().add(HistoryStage.class.getResource("/historyStyleSheet.css").toExternalForm());

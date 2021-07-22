@@ -18,6 +18,10 @@ public class AppLaunch extends Application {
     public static Stage primaryStage;
 
     public static MainFrameBorderPane mainFrameBorderPane =new MainFrameBorderPane();
+    /**
+     *  various subStages that will be shown after user pressing corresponding GUI controls;
+     *  For exiting the App, these substages must also be closed.
+     */
 
     public static HistoryStage historyStage=new HistoryStage();
     static OpenMiceTableStage openMiceTableStage;

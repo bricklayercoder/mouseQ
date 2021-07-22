@@ -243,7 +243,7 @@ public class MiceVBox extends VBox {
             weanDateColumn.setPrefWidth(90);
             cageNumberColumn.setPrefWidth(120);
             statusColumn.setPrefWidth(90);
-            notesColumn.setPrefWidth(325);
+            notesColumn.setPrefWidth(250);
 
             loadMiceRecordList();
             loadFilteredListOfMice();

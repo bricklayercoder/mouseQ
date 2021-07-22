@@ -13,6 +13,8 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -71,6 +73,20 @@ public class SetUpBreedersStage extends Stage {
                 }
             }
             this.setItems(malesTagNumberObservableList);
+
+            MenuItem testMenuItem=new MenuItem("right-clicked");
+            ContextMenu contextMenu=new ContextMenu(testMenuItem);
+            this.setContextMenu(contextMenu);
+            testMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    System.out.println("right-clicker");
+                }
+            });
+
+
+
+
         }
 
     }

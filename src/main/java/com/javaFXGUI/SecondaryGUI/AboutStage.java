@@ -12,7 +12,7 @@ public class AboutStage extends Stage {
     Scene scene=new Scene(pane);
 
     public AboutStage() {
-        appIntro="mouseQ is an light-weight application that automates laboratory mice data recording.\n\n" +
+        appIntro="mouseQ is a light-weight application that automates laboratory mice data recording.\n\n" +
                 "How to use mouseQ:\n\n" +
                 "To add new mouse record, in the lower middle panel, enter each record field,\n" +
                 "Then press 'Add Mouse' button, the mouse's records are added to the mice table;\n\n" +
@@ -22,8 +22,8 @@ public class AboutStage extends Stage {
                 "To set up breeding cage, go to 'Record -> Breed'.\n\n" +
                 "To check whether the cages statuses are compatible with statuses of the mice contained,\n" +
                 "Go to 'Record -> Sanity'.\n\n" +
-                "Information to be added or Updated can be picked from existing choices located in " +
-                "each panel's left side.\n\n" +
+                "Information to be added or updated can be picked from existing choices located in " +
+                "each \nPanel's left side.\n\n" +
                 "For each updating or adding operation, processing information will be shown in the\n" +
                 "Bottom. By pressing 'Record -> History', adding and updating history are shown in order.\n\n" +
                 "To write the current table's records into file, press 'Record -> Sync'.\n\n" +
@@ -43,8 +43,8 @@ public class AboutStage extends Stage {
         this.setTitle("About mouseQ");
         this.setResizable(false);
         pane.setContent(introText);
-        pane.setPrefWidth(785);
-        pane.setPrefHeight(815);
+        pane.setPrefWidth(710);
+        pane.setPrefHeight(840);
         introText.setStyle("-fx-font-size: 13pt; -fx-fill: white;");
         pane.getStylesheets().add(HistoryStage.class.getResource("/historyStyleSheet.css").toExternalForm());
         this.setScene(scene);

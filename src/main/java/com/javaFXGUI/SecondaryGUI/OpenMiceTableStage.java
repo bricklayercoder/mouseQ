@@ -195,7 +195,7 @@ public class OpenMiceTableStage extends Stage {
                 containerBorderPane.setTop(searchHBox);
                 miceTableView=new MiceTableView();
                 containerBorderPane.setCenter(miceTableView);
-                containerBorderPane.setPrefWidth(1300);
+                containerBorderPane.setPrefWidth(1475);
                 containerBorderPane.setPrefHeight(750);
                 containerBorderPane.getStylesheets().add(OpenMiceTableStage.class.getResource("/openMiceTable.css").toExternalForm());
                 this.setResizable(false);

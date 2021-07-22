@@ -87,6 +87,7 @@ public class DataSanityStage extends Stage {
         containerBorderPane.setPrefWidth(400);
         containerBorderPane.setPrefHeight(500);
         containerBorderPane.getStylesheets().add(DataSanityStage.class.getResource("/CageSanityStage.css").toExternalForm());
+        this.setTitle("Record Sanity Check");
         this.setResizable(false);
 
         Scene scene=new Scene(containerBorderPane);
@@ -153,6 +154,7 @@ public class DataSanityStage extends Stage {
             });
 
             sortedListOfCageSanities=new SortedList<>(filteredListOfCagesSanities);
+            sortedListOfCageSanities.comparatorProperty().bind(this.comparatorProperty());
 
             TableColumn cageNumberColumn=new TableColumn("Cage-Number");
             cageNumberColumn.setCellValueFactory(new PropertyValueFactory<>("cageNumber"));
