@@ -27,6 +27,7 @@ public class AppLaunch extends Application {
     static OpenMiceTableStage openMiceTableStage;
     static AboutStage aboutStage=new AboutStage();
     static SetUpBreedersStage setUpBreedersStage=new SetUpBreedersStage();
+    static VisualStage visualStage=new VisualStage();
     public static DataSanityStage dataSanityStage=new DataSanityStage();
 
     public static void main(String[] args){
