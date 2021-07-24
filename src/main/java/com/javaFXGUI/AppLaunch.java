@@ -47,6 +47,7 @@ public class AppLaunch extends Application {
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
+
                 if(historyStage !=null){
                     historyStage.close();
                 }
@@ -65,6 +66,12 @@ public class AppLaunch extends Application {
                 if (dataSanityStage !=null ){
                     dataSanityStage.close();
                 }
+
+                if (visualStage !=null ) {
+                    visualStage.close();
+                }
+
+
 
                 ArrayList<Mouse> miceArrayList= new ArrayList<>();
                 for (Mouse mouse :mainFrameBorderPane.miceVBox.miceRecordObservableList)

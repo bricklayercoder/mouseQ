@@ -2,6 +2,7 @@ package com.javaFXGUI;
 
 import com.cagezz.Utilities;
 import com.javaFXGUI.SecondaryGUI.OpenMiceTableStage;
+import com.javaFXGUI.SecondaryGUI.VisualStage;
 import com.mouse.Mouse;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -137,6 +138,10 @@ public class MouseQMenuBar extends MenuBar {
                     AppLaunch.dataSanityStage.close();
                 }
 
+                if (AppLaunch.visualStage !=null) {
+                    AppLaunch.visualStage.close();
+                }
+
             }
         });
 
@@ -164,6 +169,11 @@ public class MouseQMenuBar extends MenuBar {
         visualMenuItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                if( AppLaunch.visualStage != null ){
+                    AppLaunch.visualStage.close();
+                    System.out.println("Close visual stage");
+                }
+                AppLaunch.visualStage=new VisualStage();
                 AppLaunch.visualStage.show();
             }
         });

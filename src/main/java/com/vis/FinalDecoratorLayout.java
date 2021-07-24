@@ -24,6 +24,7 @@ public class FinalDecoratorLayout extends Layout {
         while(iter.hasNext()){
             DecoratorItem decorator= (DecoratorItem) iter.next();
             decorator.setFont(new Font("Calibri", Font.PLAIN, 14));
+
             decorator.setTextColor(ColorLib.rgb(
                     fillColor.getRed(),
                     fillColor.getGreen(),

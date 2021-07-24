@@ -67,7 +67,7 @@ public class MiceVBox extends VBox {
 
     public MiceVBox() {
 
-        this.getChildren().addAll(searchMiceHBox, miceTableViewAndSelectedMouseHBox, addNewMouseAndUpdateMouseHBox);
+        this.getChildren().addAll(addNewMouseAndUpdateMouseHBox,searchMiceHBox, miceTableViewAndSelectedMouseHBox);
         this.setPrefWidth(1500);
         this.setPrefHeight(600);
     }
