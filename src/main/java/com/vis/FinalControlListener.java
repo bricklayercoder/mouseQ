@@ -13,16 +13,6 @@ public class FinalControlListener extends ControlAdapter
         implements Control {
 
 
-    /**
-     *
-     * String queryNodes="select Id, Tag_Number, HostCage, Gender, Genotype, Status, " +
-     " strain, Father_TagNum, Mother_TagNum, " +
-     " datediff(curdate(), birth_date) as Age_In_Days, Coat_Colour," +
-     " numberOflitters , " +
-     " Modified_On,  Notes from mouse " ;
-
-     *
-     */
 
     Color oddRowsBackGround=new Color(0xECFFE4);
 
@@ -36,14 +26,6 @@ public class FinalControlListener extends ControlAdapter
         if(item instanceof NodeItem){
 
             JPopupMenu jpub=new JPopupMenu();
-/**
-            String tagNumber= (String) item.get("Tag_Number");
-            JMenuItem tagItem=new       JMenuItem("Tag:             "+tagNumber);
-            tagItem.setBackground(oddRowsBackGround);
-            JMenuItem genderItem=new    JMenuItem("Gender:       "+gender);
-            genderItem.setBackground(evenRowsBackGround);
- */
-  //          jpub.add(notesItem);
 
             String tagNumber=(String) item.get("Tag-Number");
             String mother= (String) item.get("Mother");

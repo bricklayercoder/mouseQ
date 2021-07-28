@@ -171,6 +171,7 @@ public class MiceVis extends AbstractVis{
         dfr.add(new InGroupPredicate("nodedec"), labelRenderer);
         vis.setRendererFactory(dfr);
 
+
         final prefuse.data.Schema DECORATOR_SCHEMA= PrefuseLib.getVisualItemSchema();
         DECORATOR_SCHEMA.setDefault(VisualItem.INTERACTIVE, false);
         DECORATOR_SCHEMA.setDefault(VisualItem.TEXTCOLOR, ColorLib.rgb(0, 200, 0));
@@ -179,7 +180,6 @@ public class MiceVis extends AbstractVis{
 
         vis.addDecorators("nodedec", "mice_visualization.nodes", DECORATOR_SCHEMA);
 
-        System.out.println("inside set up visual");
     }
 
     @Override
@@ -188,21 +188,19 @@ public class MiceVis extends AbstractVis{
 
         dis = new Display(vis);
 
-
         int[] palette ={ColorLib.rgb(femaleColor.getRed(), femaleColor.getGreen(), femaleColor.getBlue()),
-                ColorLib.rgb(maleColor.getRed(), maleColor.getGreen(), maleColor.getBlue())};
+                                        ColorLib.rgb(maleColor.getRed(), maleColor.getGreen(), maleColor.getBlue())};
 
         DataColorAction fill=new DataColorAction("mice_visualization.nodes", "Gender",
                                                             Constants.NOMINAL, VisualItem.FILLCOLOR, palette);
 
-//        ColorAction nodes=new ColorAction("mice_visualization.nodes", VisualItem.FILLCOLOR, ColorLib.gray(200));
         ColorAction edges =
                             new ColorAction("mice_visualization.edges",
                                                 VisualItem.STROKECOLOR,
                                                         ColorLib.gray(200));
         ColorAction arrow = new ColorAction("mice_visualization.edges",
-                VisualItem.FILLCOLOR,
-                ColorLib.gray(200));
+                                                        VisualItem.FILLCOLOR,
+                                                               ColorLib.gray(200));
 
         ActionList color = new ActionList();
 
@@ -210,20 +208,19 @@ public class MiceVis extends AbstractVis{
         color.add(edges);
         color.add(arrow);
         m_vis.putAction("color", color);
+
+
 /**
  *
  */
-
 
         ItemAction nodeColor = new NodeColorAction(treeNodes);
         ItemAction textColor = new TextColorAction(treeNodes);
         m_vis.putAction("textColor", textColor);
 
-        ItemAction edgeColor = new ColorAction(treeEdges,
-                VisualItem.STROKECOLOR, ColorLib.rgb(200,200,200));
+        ItemAction edgeColor = new ColorAction(treeEdges, VisualItem.STROKECOLOR, ColorLib.rgb(200,200,200));
 
-        FontAction fonts = new FontAction(treeNodes,
-                FontLib.getFont("Tahoma", 10));
+        FontAction fonts = new FontAction(treeNodes, FontLib.getFont("Tahoma", 10));
         fonts.add("ingroup('_focus_')", FontLib.getFont("Tahoma", 11));
 
         // recolor
@@ -251,7 +248,7 @@ public class MiceVis extends AbstractVis{
 
         // create the filtering and layout
         ActionList filter = new ActionList();
-        filter.add(new TreeRootAction(tree));
+  //      filter.add(new TreeRootAction(tree));
         filter.add(fonts);
         filter.add(treeLayout);
         filter.add(textColor);
@@ -267,6 +264,9 @@ public class MiceVis extends AbstractVis{
         animate.add(new PolarLocationAnimator(treeNodes, linear));
         animate.add(new ColorAnimator(treeNodes));
         animate.add(new RepaintAction());
+        animate.add(edgeColor);
+        animate.add(color);
+        animate.add(textColor);
         m_vis.putAction("animate", animate);
         m_vis.alwaysRunAfter("filter", "animate");
 
@@ -292,6 +292,7 @@ public class MiceVis extends AbstractVis{
 
 
         m_vis.addFocusGroup(linear, new DefaultTupleSet());
+
         m_vis.getGroup(Visualization.FOCUS_ITEMS).addTupleSetListener(
                 new TupleSetListener() {
                     public void tupleSetChanged(TupleSet t, Tuple[] add, Tuple[] rem) {
@@ -362,8 +363,8 @@ public class MiceVis extends AbstractVis{
 
         layout.add(new RepaintAction());
 
-        vis.putAction("color", color);
         vis.putAction("layout", layout);
+
 
         containerComponent.setLayout(new BorderLayout());
         containerComponent.add(box, BorderLayout.NORTH);
@@ -400,13 +401,15 @@ public class MiceVis extends AbstractVis{
             }
         });
 
+        dis.addControlListener(new FinalControlListener());
+
         dis.addControlListener(new DragControl());
         dis.addControlListener(new PanControl());
         dis.addControlListener(new ZoomControl());
 
-        dis.addControlListener(new FinalControlListener());
+        vis.run("layout");
+        vis.run("color");
 
-        System.out.println("Inside set up display");
     }
 
     @Override
@@ -422,13 +425,11 @@ public class MiceVis extends AbstractVis{
 
         containerComponent.add(dis, BorderLayout.CENTER);
 
-
         Color BACKGROUND = Color.WHITE;
         Color FOREGROUND = Color.DARK_GRAY;
         UILib.setColor(containerComponent, BACKGROUND, FOREGROUND);
 
-        vis.run("color");
-        vis.run("layout");
+
 
     }
 
