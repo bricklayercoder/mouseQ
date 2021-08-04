@@ -141,6 +141,7 @@ public class MiceVBox extends VBox {
                             }
 
                             // Compare each mouse attribute
+                            /**
                             String lowerCaseFilter = newValue.toLowerCase().trim();
 
                             if (mouse.getTagNumber().toLowerCase().contains(lowerCaseFilter)) {
@@ -171,6 +172,61 @@ public class MiceVBox extends VBox {
                                 return false;
 
                             }
+                             */
+
+                            String[] lowercaseFilters=newValue.trim().toLowerCase().split(" ");
+                            boolean check=true;
+                            int size = lowercaseFilters.length;
+                            boolean[] checks= new boolean[size];
+                            for (int i=0; i<size; i++){
+                                if (mouse.getTagNumber().toLowerCase().contains(lowercaseFilters[i])) {
+                                    checks[i]= true;
+                                    continue;
+                                } else if (mouse.getMaternalTagNumber().toLowerCase().contains(lowercaseFilters[i])) {
+                                    checks[i]= true;
+                                    continue;
+                                } else if (mouse.getPaternalTagNumber().toLowerCase().contains(lowercaseFilters[i])) {
+                                    checks[i]= true;
+                                    continue;
+                                } else if (mouse.getGenotype().toLowerCase().contains(lowercaseFilters[i])) {
+                                    checks[i]= true;
+                                    continue;
+                                } else if (mouse.getBirthDate().toLowerCase().contains(lowercaseFilters[i])) {
+                                    checks[i]= true;
+                                    continue;
+                                } else if (mouse.getGender().toLowerCase().contains(lowercaseFilters[i])) {
+                                    checks[i]= true;
+                                    continue;
+                                } else if (mouse.getStrain().toLowerCase().contains(lowercaseFilters[i])) {
+                                    checks[i]= true;
+                                    continue;
+                                } else if (mouse.getCoatColour().toLowerCase().contains(lowercaseFilters[i])) {
+                                    checks[i]= true;
+                                    continue;
+                                } else if (mouse.getWeanDate().toLowerCase().contains(lowercaseFilters[i])) {
+                                    checks[i]= true;
+                                    continue;
+                                } else if (mouse.getCageNumber().toLowerCase().contains(lowercaseFilters[i])) {
+                                    checks[i]= true;
+                                    continue;
+                                } else if (mouse.getStatus().toLowerCase().contains(lowercaseFilters[i])) {
+                                    checks[i]= true;
+                                    continue;
+                                } else if (mouse.getNotes().toLowerCase().contains(lowercaseFilters[i])) {
+                                    checks[i]= true;
+                                    continue;
+                                } else {
+                                    checks[i]= false;
+
+                                }
+                            }
+                            for (int i=0; i<size; i++){
+                                if(checks[i] == false){
+                                    check=false;
+                                    break;
+                                }
+                            }
+                            return check;
                         });
                     });
 

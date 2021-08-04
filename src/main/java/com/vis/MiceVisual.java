@@ -4,5 +4,4 @@ import prefuse.Display;
 
 public class MiceVisual extends Display {
 
-
 }

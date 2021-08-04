@@ -67,6 +67,7 @@ public class OpenMiceTableStage extends Stage {
                                                                         }
 
                                                                         // Compare each mouse attribute
+                                                                        /**
                                                                         String lowerCaseFilter = newValue.toLowerCase().trim();
 
                                                                         if (mouse.getTagNumber().toLowerCase().contains(lowerCaseFilter)) {
@@ -97,6 +98,60 @@ public class OpenMiceTableStage extends Stage {
                                                                                 return false;
 
                                                                         }
+                                                                         */
+                                                                        String[] lowercaseFilters=newValue.trim().toLowerCase().split(" ");
+                                                                        boolean check=true;
+                                                                        int size = lowercaseFilters.length;
+                                                                        boolean[] checks= new boolean[size];
+                                                                        for (int i=0; i<size; i++){
+                                                                                if (mouse.getTagNumber().toLowerCase().contains(lowercaseFilters[i])) {
+                                                                                        checks[i]= true;
+                                                                                        continue;
+                                                                                } else if (mouse.getMaternalTagNumber().toLowerCase().contains(lowercaseFilters[i])) {
+                                                                                        checks[i]= true;
+                                                                                        continue;
+                                                                                } else if (mouse.getPaternalTagNumber().toLowerCase().contains(lowercaseFilters[i])) {
+                                                                                        checks[i]= true;
+                                                                                        continue;
+                                                                                } else if (mouse.getGenotype().toLowerCase().contains(lowercaseFilters[i])) {
+                                                                                        checks[i]= true;
+                                                                                        continue;
+                                                                                } else if (mouse.getBirthDate().toLowerCase().contains(lowercaseFilters[i])) {
+                                                                                        checks[i]= true;
+                                                                                        continue;
+                                                                                } else if (mouse.getGender().toLowerCase().contains(lowercaseFilters[i])) {
+                                                                                        checks[i]= true;
+                                                                                        continue;
+                                                                                } else if (mouse.getStrain().toLowerCase().contains(lowercaseFilters[i])) {
+                                                                                        checks[i]= true;
+                                                                                        continue;
+                                                                                } else if (mouse.getCoatColour().toLowerCase().contains(lowercaseFilters[i])) {
+                                                                                        checks[i]= true;
+                                                                                        continue;
+                                                                                } else if (mouse.getWeanDate().toLowerCase().contains(lowercaseFilters[i])) {
+                                                                                        checks[i]= true;
+                                                                                        continue;
+                                                                                } else if (mouse.getCageNumber().toLowerCase().contains(lowercaseFilters[i])) {
+                                                                                        checks[i]= true;
+                                                                                        continue;
+                                                                                } else if (mouse.getStatus().toLowerCase().contains(lowercaseFilters[i])) {
+                                                                                        checks[i]= true;
+                                                                                        continue;
+                                                                                } else if (mouse.getNotes().toLowerCase().contains(lowercaseFilters[i])) {
+                                                                                        checks[i]= true;
+                                                                                        continue;
+                                                                                } else {
+                                                                                        checks[i]= false;
+
+                                                                                }
+                                                                        }
+                                                                        for (int i=0; i<size; i++){
+                                                                                if(checks[i] == false){
+                                                                                        check=false;
+                                                                                        break;
+                                                                                }
+                                                                        }
+                                                                        return check;
                                                                 }
                                                         });
                                                 }
@@ -171,7 +226,7 @@ public class OpenMiceTableStage extends Stage {
                         weanDateColumn.setPrefWidth(90);
                         cageNumberColumn.setPrefWidth(120);
                         statusColumn.setPrefWidth(90);
-                        notesColumn.setPrefWidth(325);
+                        notesColumn.setPrefWidth(600);
 
                         loadFilteredListOfMice();
                         sortedListofMice=new SortedList<>(filteredListOfMice);
@@ -195,10 +250,10 @@ public class OpenMiceTableStage extends Stage {
                 containerBorderPane.setTop(searchHBox);
                 miceTableView=new MiceTableView();
                 containerBorderPane.setCenter(miceTableView);
-                containerBorderPane.setPrefWidth(1475);
+                containerBorderPane.setPrefWidth(1600);
                 containerBorderPane.setPrefHeight(750);
                 containerBorderPane.getStylesheets().add(OpenMiceTableStage.class.getResource("/openMiceTable.css").toExternalForm());
-                this.setResizable(false);
+                this.setResizable(true);
 
                 Scene scene= new Scene(containerBorderPane);
                 this.setScene(scene);
