@@ -45,13 +45,13 @@ public class FinalControlListener extends ControlAdapter
             JMenuItem fatherMI = new JMenuItem("Father:                  "+ father);
             JMenuItem genotypeMI = new JMenuItem("Genotype:             " + genotype);
             JMenuItem birthDateMI = new JMenuItem("Birth-Date:           "+ birthDate);
-            JMenuItem genderMI = new JMenuItem("Gender:                " + gender);
-            JMenuItem strainMI = new JMenuItem("Strain:                  " + strain);
-            JMenuItem coatColorMI = new JMenuItem("Coat-Color:         " + coatColor);
-            JMenuItem weanDateMI = new JMenuItem("Wean-Date:         " + weanDate);
-            JMenuItem cageNumberMI= new JMenuItem("Cage-Number:    " + cageNumber);
-            JMenuItem statusMI = new JMenuItem("Status:                  " + status);
-            JMenuItem notesMI = new JMenuItem("Notes:                   " + notes);
+            JMenuItem genderMI = new JMenuItem("Gender:                 " + gender);
+            JMenuItem strainMI = new JMenuItem("Strain:                   " + strain);
+            JMenuItem coatColorMI = new JMenuItem("Coat-Color:          " + coatColor);
+            JMenuItem weanDateMI = new JMenuItem("Wean-Date:          " + weanDate);
+            JMenuItem cageNumberMI= new JMenuItem("Cage-Number:     " + cageNumber);
+            JMenuItem statusMI = new JMenuItem("Status:                   " + status);
+            JMenuItem notesMI = new JMenuItem("Notes:                    " + notes);
 
             tagMI.setBackground(oddRowsBackGround);
             motherMI.setBackground(evenRowsBackGround);

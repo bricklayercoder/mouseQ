@@ -33,6 +33,8 @@ public class AboutStage extends Stage {
                 "Historical records can be viewed by clicking 'File -> Open' and choosing the file to be opened.\n\n" +
                 "To search a record, enter key phrases in the search field.\n" +
                 "\n" +
+                "To see visualization of mouse record, go to 'Record -> Visualization'\n" +
+                "Mouse status can be searched through the upper-right search panel.\n\n" +
                 "mouseQ was developed by Bo Zhou, under an open source licence. Commercial distribution of\n" +
                 "The application is prohibited\n" +
                 "All rights reserved to the Application's author.\n\n" +
@@ -44,7 +46,7 @@ public class AboutStage extends Stage {
         this.setResizable(false);
         pane.setContent(introText);
         pane.setPrefWidth(710);
-        pane.setPrefHeight(840);
+        pane.setPrefHeight(900);
         introText.setStyle("-fx-font-size: 13pt; -fx-fill: white;");
         pane.getStylesheets().add(HistoryStage.class.getResource("/historyStyleSheet.css").toExternalForm());
         this.setScene(scene);
